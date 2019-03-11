@@ -1,15 +1,9 @@
 package main
 
 import (
-	"os"
-
 	"github.com/koungkub/soa2019_group8/backend/controller"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-)
-
-var (
-	port = os.Getenv("PORT")
 )
 
 func init() {
@@ -21,13 +15,16 @@ func init() {
 
 	// About environment variables
 	viper.SetConfigName("env")
-	viper.AddConfigPath("./config/")
+	viper.AddConfigPath("./config")
 	viper.AutomaticEnv()
+	if err := viper.ReadInConfig(); err != nil {
+		logrus.Fatalf("Can not load environment variable error is : %s\n", err)
+	}
 }
 
 func main() {
 
 	route := controller.Route()
 
-	logrus.Fatal(route.Start(port))
+	logrus.Fatal(route.Start(viper.GetString("PORT")))
 }
