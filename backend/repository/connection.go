@@ -18,7 +18,6 @@ func DBConnection() *sql.DB {
 		viper.GetString("DB_HOST"),
 		viper.GetString("DB_PORT"),
 		viper.GetString("DB_DATABASE"))
-	fmt.Println("one")
 	db, err := sql.Open("mysql", dbURL)
 
 	if err != nil {
@@ -33,7 +32,6 @@ func DBConnection() *sql.DB {
 func GetDBConnection() *sql.DB {
 
 	db := DBConnection()
-	fmt.Println("two")
 	if err := db.Ping(); err != nil {
 		defer db.Close()
 		logrus.Errorf("Can not connect to database error is : %s", err)
