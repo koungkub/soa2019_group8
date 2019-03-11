@@ -20,6 +20,6 @@ func TestRoute(t *testing.T) {
 	c := e.NewContext(req, rec)
 
 	if assert.NoError(t, EntranceParking(c)) {
-		assert.Equal(t, http.StatusOK, rec.Code)
+		assert.Equal(t, http.StatusUnprocessableEntity, rec.Code)
 	}
 }
