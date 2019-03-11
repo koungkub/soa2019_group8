@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/koungkub/soa2019_group8/backend/controller"
+	"github.com/koungkub/soa2019_group8/backend/router"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
@@ -24,7 +24,7 @@ func init() {
 
 func main() {
 
-	route := controller.Route()
+	route := router.Route()
 
 	logrus.Fatal(route.Start(viper.GetString("PORT")))
 }

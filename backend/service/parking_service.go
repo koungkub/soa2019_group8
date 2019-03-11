@@ -2,11 +2,18 @@ package service
 
 import (
 	"database/sql"
-
-	"github.com/labstack/echo"
+	"time"
 )
 
 // EntranceParkingService : User entrance to parking
-func EntranceParkingService(c echo.Context, db *sql.DB) {
-
+func EntranceParkingService(db *sql.DB) error {
+	stmt, err := db.Prepare("INSERT INTO `parking` (`status`, `rate`, start_time) VALUES (?, ?, ?)")
+	if err != nil {
+		return err
+	}
+	_, err = stmt.Exec("parking", 200, time.Now())
+	if err != nil {
+		return err
+	}
+	return nil
 }
