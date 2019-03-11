@@ -16,6 +16,7 @@ func Route() *echo.Echo {
 	e.Use(
 		middleware.Recover(),
 		middleware.Secure(),
+		middleware.RequestID(),
 		middleware.BodyLimit("2M"),
 		middleware.GzipWithConfig(middleware.GzipConfig{
 			Level: 5,

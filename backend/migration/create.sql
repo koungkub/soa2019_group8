@@ -1,0 +1,9 @@
+CREATE TABLE iF NOT EXISTS `parking` (
+	id INT UNSIGNED NOT NULL KEY AUTO_INCREMENT,
+    status ENUM('parking', 'exit') NOT NULL,
+    rate INT UNSIGNED NOT NULL,
+    start_time DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `parking`

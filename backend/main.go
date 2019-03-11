@@ -8,7 +8,7 @@ import (
 
 func init() {
 
-	// About log
+	// About logging
 	logrus.SetLevel(logrus.DebugLevel)
 	logrus.SetFormatter(&logrus.JSONFormatter{})
 	logrus.SetReportCaller(true)
