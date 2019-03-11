@@ -51,7 +51,7 @@ func Route() *echo.Echo {
 		})
 	})
 
-	e.GET("/parking/entrance", controller.EntranceParking())
+	e.GET("/parking/entrance", controller.EntranceParking)
 
 	return e
 }

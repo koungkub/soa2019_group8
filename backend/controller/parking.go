@@ -11,16 +11,15 @@ import (
 )
 
 // EntranceParking : User entrance to parking
-func EntranceParking() echo.HandlerFunc {
-	return func(c echo.Context) error {
-		db := repository.DBConnection()
+func EntranceParking(c echo.Context) error {
 
-		err := service.EntranceParkingService(db)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusUnprocessableEntity, "Failed")
-		}
-		return c.JSON(http.StatusOK, echo.Map{
-			"message": "ok",
-		})
+	db := repository.DBConnection()
+
+	err := service.EntranceParkingService(db)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnprocessableEntity, "Failed")
 	}
+	return c.JSON(http.StatusOK, echo.Map{
+		"message": "ok",
+	})
 }
