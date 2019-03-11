@@ -11,7 +11,7 @@ func init() {
 	// About logging
 	logrus.SetLevel(logrus.DebugLevel)
 	logrus.SetFormatter(&logrus.JSONFormatter{})
-	logrus.SetReportCaller(true)
+	// logrus.SetReportCaller(true)
 
 	// About environment variables
 	viper.SetConfigName("env")

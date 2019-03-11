@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+
 	"fmt"
 
 	"github.com/sirupsen/logrus"
