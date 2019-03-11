@@ -11,7 +11,7 @@ import (
 )
 
 // DBConnection : Get database URL connection
-func DBConnection() *sql.DB {
+func GetDBConnection() *sql.DB {
 
 	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
 		viper.GetString("DB_USERNAME"),
@@ -23,20 +23,6 @@ func DBConnection() *sql.DB {
 
 	if err != nil {
 		logrus.Errorf("Database URL was wrong error is : %s", err)
-		return nil
-	}
-
-	return db
-}
-
-// GetDBConnection : Get database connection
-func GetDBConnection() *sql.DB {
-
-	db := DBConnection()
-	if err := db.Ping(); err != nil {
-		defer db.Close()
-		logrus.Errorf("Can not connect to database error is : %s", err)
-		return nil
 	}
 
 	return db

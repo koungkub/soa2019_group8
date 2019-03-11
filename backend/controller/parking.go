@@ -13,7 +13,7 @@ import (
 // EntranceParking : User entrance to parking
 func EntranceParking(c echo.Context) error {
 
-	db := repository.DBConnection()
+	db := repository.GetDBConnection()
 
 	err := service.EntranceParkingService(db)
 	if err != nil {
