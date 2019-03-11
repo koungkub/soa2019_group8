@@ -28,7 +28,6 @@ func Route() *echo.Echo {
 				echo.HeaderAccept,
 				echo.HeaderAuthorization,
 				echo.HeaderAcceptEncoding,
-				echo.HeaderCookie,
 				echo.HeaderContentLength,
 			},
 			AllowMethods: []string{
