@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 
+	"github.com/koungkub/soa2019_group8/backend/middlewares"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
@@ -38,6 +39,9 @@ func Route() *echo.Echo {
 			},
 		}),
 	)
+
+	// Custom middleware
+	e.HTTPErrorHandler = middlewares.HTTPErrorHandler
 
 	// Health check path
 	e.GET("/_/health", func(c echo.Context) error {
