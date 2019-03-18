@@ -23,3 +23,9 @@ func EntranceParking(c echo.Context) error {
 		"message": "ok",
 	})
 }
+
+// func EntranceParking(db *sql.DB) echo.HandlerFunc {
+// 	return func(c echo.Context) error {
+
+// 	}
+// }

@@ -1,0 +1,9 @@
+FROM golang:1.12-alpine AS golang-build
+WORKDIR /work
+COPY . /work
+ENV GO111MODULE on
+ENV TZ Asia/Bangkok
+ENV CGO_ENABLED 0
+ENV GOOS linux
+
+RUN go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
