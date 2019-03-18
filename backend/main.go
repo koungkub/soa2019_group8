@@ -18,7 +18,7 @@ func init() {
 	viper.AddConfigPath("./config")
 	viper.AutomaticEnv()
 	if err := viper.ReadInConfig(); err != nil {
-		logrus.Warnf("Can not load environment variable error is : %s\n", err)
+		logrus.Warnf("Can not load environment variable, error is : %s\n", err)
 	}
 }
 

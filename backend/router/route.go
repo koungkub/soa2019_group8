@@ -42,6 +42,8 @@ func Route() *echo.Echo {
 	)
 
 	// Custom middleware
+
+	// Custom middleware
 	e.HTTPErrorHandler = middlewares.HTTPErrorHandler
 
 	// Health check path
