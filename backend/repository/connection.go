@@ -23,7 +23,7 @@ func GetDBConnection() *sql.DB {
 	db, err := sql.Open("mysql", dbURL)
 
 	if err != nil {
-		logrus.Errorf("Database URL was wrong error is : %s", err)
+		logrus.Errorf("Database URL was wrong, error is : %s", err)
 		return nil
 	}
 
