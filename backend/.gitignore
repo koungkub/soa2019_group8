@@ -58,4 +58,8 @@ Temporary Items
 # Ignore all local history of files
 .history
 
+koung.sh
+pin.sh
+delete.sh
+
 # End of https://www.gitignore.io/api/go,macos,visualstudiocode
