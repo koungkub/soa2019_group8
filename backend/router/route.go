@@ -52,7 +52,7 @@ func Route() *echo.Echo {
 	// Health check
 	e.GET("/_/health", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, echo.Map{
-			"message": "healthy",
+			"message": "health",
 		})
 	})
 
