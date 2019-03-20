@@ -1,9 +1,9 @@
 package router
 
 import (
+	"github.com/koungkub/soa2019_group8/backend/repository"
 	"net/http"
 
-	"github.com/koungkub/soa2019_group8/backend/controller"
 	"github.com/koungkub/soa2019_group8/backend/middlewares"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -20,7 +20,7 @@ func Route() *echo.Echo {
 		middleware.RequestID(),
 		middleware.BodyLimit("2M"),
 		middleware.GzipWithConfig(middleware.GzipConfig{
-			Level: 5,
+			Level: 3,
 		}),
 		middleware.CORSWithConfig(middleware.CORSConfig{
 			AllowOrigins: []string{"*"},
@@ -42,18 +42,19 @@ func Route() *echo.Echo {
 	)
 
 	// Custom middleware
+	e.Use(
+		middlewares.DatabaseTransaction(repository.GetDBConnection()),
+	)
 
-	// Custom middleware
+	// Error handler
 	e.HTTPErrorHandler = middlewares.HTTPErrorHandler
 
-	// Health check path
+	// Health check
 	e.GET("/_/health", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, echo.Map{
 			"message": "healthy",
 		})
 	})
-
-	e.GET("/parking/entrance", controller.EntranceParking)
 
 	return e
 }

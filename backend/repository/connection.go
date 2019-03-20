@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// GetDBConnection : Get database URL connection
+// GetDBConnection : Get database connection
 func GetDBConnection() *sql.DB {
 
 	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
