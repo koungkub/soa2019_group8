@@ -8,6 +8,8 @@ import (
 	"github.com/sirupsen/logrus"
 
 	"github.com/spf13/viper"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // GetDBConnection : Get database connection
