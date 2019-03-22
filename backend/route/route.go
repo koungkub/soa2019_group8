@@ -1,8 +1,9 @@
-package router
+package route
 
 import (
-	"github.com/koungkub/soa2019_group8/backend/repository"
 	"net/http"
+
+	"github.com/koungkub/soa2019_group8/backend/repository"
 
 	"github.com/koungkub/soa2019_group8/backend/middlewares"
 	"github.com/labstack/echo"
