@@ -24,7 +24,7 @@ func init() {
 
 func main() {
 
-	route := route.Route()
+	routing := route.Route()
 
-	logrus.Fatal(route.Start(viper.GetString("PORT")))
+	logrus.Fatal(routing.Start(viper.GetString("PORT")))
 }
