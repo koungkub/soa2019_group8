@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func Test_Generate_Token(t *testing.T) {
+func TestGenerateToken(t *testing.T) {
 	var i int64 = 1
 
 	id := &i
@@ -15,7 +15,7 @@ func Test_Generate_Token(t *testing.T) {
 	}
 }
 
-func Test_Generate_And_Verify_Token(t *testing.T) {
+func TestGenerateAndVerifyToken(t *testing.T) {
 	var i int64 = 1
 
 	id := &i
