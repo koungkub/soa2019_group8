@@ -3,9 +3,9 @@ package route
 import (
 	"net/http"
 
-	"github.com/koungkub/soa2019_group8/backend/repository"
+	"github.com/koungkub/soa2019_group8/parking/repository"
 
-	"github.com/koungkub/soa2019_group8/backend/middlewares"
+	"github.com/koungkub/soa2019_group8/parking/middlewares"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )

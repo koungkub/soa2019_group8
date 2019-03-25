@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/koungkub/soa2019_group8/backend/service"
+	"github.com/koungkub/soa2019_group8/parking/service"
 
 	"github.com/labstack/echo"
 )
