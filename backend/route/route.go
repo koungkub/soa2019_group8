@@ -1,7 +1,6 @@
 package route
 
 import (
-	"github.com/koungkub/soa2019_group8/backend/controller"
 	"net/http"
 
 	"github.com/koungkub/soa2019_group8/backend/repository"
@@ -57,11 +56,6 @@ func Route() *echo.Echo {
 			"message": "health",
 		})
 	})
-
-	e.Group("/parking")
-	{
-		e.GET("/entrance", controller.EntranceParking())
-	}
 
 	return e
 }
