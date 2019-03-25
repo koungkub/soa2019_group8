@@ -6,6 +6,7 @@ import (
 )
 
 func TestGenerateToken(t *testing.T) {
+
 	var i int64 = 1
 
 	id := &i
@@ -16,6 +17,7 @@ func TestGenerateToken(t *testing.T) {
 }
 
 func TestGenerateAndVerifyToken(t *testing.T) {
+
 	var i int64 = 1
 
 	id := &i

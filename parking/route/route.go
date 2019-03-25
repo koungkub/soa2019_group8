@@ -14,6 +14,7 @@ import (
 
 // Route : Create echo instance
 func Route() *echo.Echo {
+
 	e := echo.New()
 
 	// Basic middleware

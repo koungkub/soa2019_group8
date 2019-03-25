@@ -18,6 +18,7 @@ type CustomToken struct {
 
 // GenerateToken : generate a jwt token with id
 func GenerateToken(id *int64, expiresIn time.Duration) (*string, error) {
+
 	time := time.Now()
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, CustomToken{
@@ -37,6 +38,7 @@ func GenerateToken(id *int64, expiresIn time.Duration) (*string, error) {
 
 // ValidateToken : validate token
 func ValidateToken(token *string) (*CustomToken, error) {
+
 	parseToken, err := jwt.ParseWithClaims(*token, &CustomToken{}, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
