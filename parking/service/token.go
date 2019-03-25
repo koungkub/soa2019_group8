@@ -17,11 +17,11 @@ type CustomToken struct {
 }
 
 // GenerateToken : generate a jwt token with id
-func GenerateToken(id int64, expiresIn time.Duration) (*string, error) {
+func GenerateToken(id int, expiresIn time.Duration) (*string, error) {
 	time := time.Now()
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, CustomToken{
-		id,
+		int64(id),
 		jwt.StandardClaims{
 			IssuedAt:  time.Unix(),
 			ExpiresAt: time.Add(expiresIn).Unix(),

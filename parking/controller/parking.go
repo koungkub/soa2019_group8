@@ -3,6 +3,7 @@ package controller
 import (
 	"database/sql"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/koungkub/soa2019_group8/parking/service"
@@ -15,7 +16,7 @@ func EntranceParking() echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		db := c.Get("db").(*sql.DB)
-		storeID := c.Param("id")
+		storeID, _ := strconv.Atoi(c.Param("id"))
 
 		id, err := service.EntranceParkingService(db, storeID)
 		if err != nil {
@@ -34,7 +35,7 @@ func EntranceParking() echo.HandlerFunc {
 
 		c.SetCookie(cookie)
 		return c.JSON(http.StatusCreated, echo.Map{
-			"message": "ok",
+			"message": "entrance to parking success",
 		})
 	}
 }
