@@ -18,12 +18,11 @@ func EntranceParking() echo.HandlerFunc {
 		db := c.Get("db").(*sql.DB)
 		storeID, _ := strconv.Atoi(c.Param("id"))
 
-		id, err := service.EntranceParkingService(db, storeID)
+		id, err := service.EntranceParkingService(db, int64(storeID))
 		if err != nil {
 			return echo.NewHTTPError(422, "Can not entrance to parking")
 		}
-
-		token, err := service.GenerateToken(id, 24*time.Hour)
+		token, err := service.GenerateToken(&id, 24*time.Hour)
 		if err != nil {
 			return echo.NewHTTPError(422, "Generate token error")
 		}
