@@ -2,6 +2,7 @@ package controller
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -22,17 +23,14 @@ func EntranceParking() echo.HandlerFunc {
 		if err != nil {
 			return echo.NewHTTPError(422, "Can not entrance to parking")
 		}
-		token, err := service.GenerateToken(&id, 24*time.Hour)
+		token, err := service.GenerateToken(id, 24*time.Hour)
 		if err != nil {
 			return echo.NewHTTPError(422, "Generate token error")
 		}
 
-		cookie := new(http.Cookie)
-		cookie.Name = "token"
-		cookie.Value = *token
-		cookie.Expires = time.Now().Add(24 * time.Hour)
+		authorizationHeader := fmt.Sprintf("Bearer %s", *token)
+		c.Response().Header().Set("Authorization", authorizationHeader)
 
-		c.SetCookie(cookie)
 		return c.JSON(http.StatusCreated, echo.Map{
 			"message": "entrance to parking success",
 		})

@@ -60,7 +60,7 @@ func Route() *echo.Echo {
 
 	parking := e.Group("/parking")
 	{
-		parking.GET("/entrance", controller.EntranceParking())
+		parking.GET("/entrance/:id", controller.EntranceParking())
 	}
 
 	return e
