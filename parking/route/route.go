@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/koungkub/soa2019_group8/parking/controller"
+
 	"github.com/koungkub/soa2019_group8/parking/repository"
 
 	"github.com/koungkub/soa2019_group8/parking/middlewares"
@@ -58,7 +59,10 @@ func Route() *echo.Echo {
 		})
 	})
 
-	e.GET("/entrance/:id", controller.EntranceParking())
+	parking := e.Group("/parking")
+	{
+		parking.GET("/entrance/:id", controller.EntranceParking())
+	}
 
 	return e
 }

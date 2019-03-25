@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/koungkub/soa2019_group8/backend/route"
+	"github.com/koungkub/soa2019_group8/parking/route"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
@@ -11,7 +11,7 @@ func init() {
 	// About logging
 	logrus.SetLevel(logrus.DebugLevel)
 	logrus.SetFormatter(&logrus.JSONFormatter{})
-	// logrus.SetReportCaller(true)
+	logrus.SetReportCaller(true)
 
 	// About environment variables
 	viper.SetConfigName("env")
