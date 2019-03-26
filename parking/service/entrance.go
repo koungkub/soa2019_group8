@@ -7,24 +7,29 @@ import (
 	"github.com/labstack/echo"
 )
 
+// Entrancer : interface for easy to write test
 type Entrancer interface {
 	Entrance(c echo.Context) (*int64, error)
 	GetID() int
 	SetID(id int)
 }
 
+// EntranceParkingService : struct to store storeID from user
 type EntranceParkingService struct {
 	ID int
 }
 
+// GetID : getter id
 func (ep *EntranceParkingService) GetID() int {
 	return ep.ID
 }
 
+// SetID : setter id
 func (ep *EntranceParkingService) SetID(id int) {
 	ep.ID = id
 }
 
+// Entrance : insert data to database
 func (ep *EntranceParkingService) Entrance(c echo.Context) (*int64, error) {
 
 	db := c.Get("db").(*sql.DB)
