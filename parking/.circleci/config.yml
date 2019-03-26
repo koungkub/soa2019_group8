@@ -1,0 +1,15 @@
+# Golang CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-go/ for more details
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version
+      - image: circleci/golang:1.12
+    working_directory: /go/src/github.com/koungkub/soa2019_group8/parking
+    steps:
+      - checkout
+
+      - run: go get -u ./...
+      - run: go test -v ./...
