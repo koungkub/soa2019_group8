@@ -3,6 +3,8 @@ package route
 import (
 	"net/http"
 
+	"github.com/koungkub/soa2019_group8/parking/service"
+
 	"github.com/koungkub/soa2019_group8/parking/controller"
 
 	"github.com/koungkub/soa2019_group8/parking/repository"
@@ -62,7 +64,7 @@ func Route() *echo.Echo {
 
 	parking := e.Group("/parking")
 	{
-		parking.GET("/entrance/:id", controller.EntranceParking())
+		parking.GET("/entrance/:id", controller.EntranceParking(new(service.EntranceParkingService)))
 	}
 
 	return e

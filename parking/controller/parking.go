@@ -1,31 +1,30 @@
 package controller
 
 import (
-	"database/sql"
 	"fmt"
 	"net/http"
 	"strconv"
 	"time"
 
-	"github.com/sirupsen/logrus"
-
 	"github.com/koungkub/soa2019_group8/parking/service"
+	"github.com/sirupsen/logrus"
 
 	"github.com/labstack/echo"
 )
 
 // EntranceParking : Entrance to parking
-func EntranceParking() echo.HandlerFunc {
+func EntranceParking(entrance service.Entrancer) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
-		db := c.Get("db").(*sql.DB)
 		storeID, err := strconv.Atoi(c.Param("id"))
 		if err != nil {
 			logrus.Error("{id} only accept type int")
 			return echo.NewHTTPError(422, "{id} only accept type int")
 		}
 
-		id, err := service.EntranceParkingService(db, int64(storeID))
+		entrance.SetID(storeID)
+
+		id, err := entrance.Entrance(c)
 		if err != nil {
 			logrus.Error("Can not entrance to parking, departmentstore id not found")
 			return echo.NewHTTPError(422, "Can not entrance to parking, departmentstore id not found")

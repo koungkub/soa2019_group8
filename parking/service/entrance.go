@@ -3,10 +3,31 @@ package service
 import (
 	"database/sql"
 	"time"
+
+	"github.com/labstack/echo"
 )
 
-// EntranceParkingService : User entrance to parking
-func EntranceParkingService(db *sql.DB, storeID int64) (*int64, error) {
+type Entrancer interface {
+	Entrance(c echo.Context) (*int64, error)
+	GetID() int
+	SetID(id int)
+}
+
+type EntranceParkingService struct {
+	ID int
+}
+
+func (ep *EntranceParkingService) GetID() int {
+	return ep.ID
+}
+
+func (ep *EntranceParkingService) SetID(id int) {
+	ep.ID = id
+}
+
+func (ep *EntranceParkingService) Entrance(c echo.Context) (*int64, error) {
+
+	db := c.Get("db").(*sql.DB)
 
 	prepareStatement, err := db.Prepare("INSERT INTO Parking (status, start_time, department_store_id) VALUES (?, ?, ?)")
 	if err != nil {
@@ -14,7 +35,7 @@ func EntranceParkingService(db *sql.DB, storeID int64) (*int64, error) {
 	}
 	defer prepareStatement.Close()
 
-	response, err := prepareStatement.Exec("parking", time.Now(), storeID)
+	response, err := prepareStatement.Exec("parking", time.Now(), ep.ID)
 	if err != nil {
 		return nil, err
 	}
