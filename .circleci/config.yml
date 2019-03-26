@@ -9,7 +9,8 @@ jobs:
       - image: circleci/golang:1.12
     working_directory: /go/src/github.com/koungkub/soa2019_group8
     steps:
-      - checkout
+      - checkout:
+        path: ~/soa2019_group8/parking
 
       - run: go get -u ./...
       - run: go test -v ./...
