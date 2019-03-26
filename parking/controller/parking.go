@@ -19,7 +19,7 @@ func EntranceParking(entrance service.Entrancer) echo.HandlerFunc {
 		storeID, err := strconv.Atoi(c.Param("id"))
 		if err != nil {
 			logrus.Error("{id} only accept type int")
-			return echo.NewHTTPError(422, "{id} only accept type int")
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "{id} only accept type int")
 		}
 
 		entrance.SetID(storeID)
@@ -27,12 +27,12 @@ func EntranceParking(entrance service.Entrancer) echo.HandlerFunc {
 		id, err := entrance.Entrance(c)
 		if err != nil {
 			logrus.Error("Can not entrance to parking, departmentstore id not found")
-			return echo.NewHTTPError(422, "Can not entrance to parking, departmentstore id not found")
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "Can not entrance to parking, departmentstore id not found")
 		}
 		token, err := service.GenerateToken(id, 24*time.Hour)
 		if err != nil {
 			logrus.Error("Generate token error")
-			return echo.NewHTTPError(422, "Generate token error")
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "Generate token error")
 		}
 
 		authorizationHeader := fmt.Sprintf("Bearer %s", *token)
