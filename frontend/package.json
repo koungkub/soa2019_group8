@@ -1,0 +1,29 @@
+{
+  "name": "soa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "bootstrap": "^4.2.1",
+    "next": "^7.0.2",
+    "react": "^16.8.0",
+    "react-bootstrap": "^1.0.0-beta.5",
+    "react-dom": "^16.8.0",
+    "react-moment": "^0.8.4",
+    "react-no-ssr": "^1.1.0",
+    "react-qr-reader": "^2.1.2",
+    "styled-components": "^4.1.3"
+  }
+}
