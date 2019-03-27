@@ -12,5 +12,6 @@ jobs:
       - checkout
 
       - run: pwd
+      - run: ls -la
       - run: go mod download
       - run: go test -v ./...
