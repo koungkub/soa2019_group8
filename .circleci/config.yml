@@ -7,10 +7,10 @@ jobs:
     docker:
       # specify the version
       - image: circleci/golang:1.12
-    working_directory: /go/src/github.com/koungkub/soa2019_group8
+    working_directory: /go/src/github.com/koungkub/soa2019_group88
     steps:
       - checkout
 
       - run: pwd
-      - run: go get -u ./...
+      - run: go mod download
       - run: go test -v ./...

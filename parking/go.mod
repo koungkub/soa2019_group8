@@ -10,6 +10,7 @@ require (
 	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/sirupsen/logrus v1.4.0
 	github.com/spf13/viper v1.3.2
+	github.com/stretchr/testify v1.2.2
 	github.com/valyala/fasttemplate v1.0.1 // indirect
 	google.golang.org/appengine v1.5.0 // indirect
 )
