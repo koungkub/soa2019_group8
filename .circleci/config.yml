@@ -18,7 +18,8 @@ jobs:
                 path: ~/soa2019_group8
             - restore_cache:
                 keys:
-                    - pkg-cache
+                    - pkg-cache-{{ arch }}-{{ checksum "go.mod" }}
+                    - pkd-cache
             - run:
                 name: check dependencies and download dependencies
                 command: |
@@ -29,7 +30,7 @@ jobs:
                 command: |
                     go mod vendor
             - save_cache:
-                key: pkg-cache
+                key: pkg-cache-{{ arch }}-{{ checksum "go.mod" }}
                 paths:
                     - /go/pkg
             - run:
