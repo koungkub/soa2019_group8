@@ -3,16 +3,13 @@
 # Check https://circleci.com/docs/2.0/language-go/ for more details
 version: 2
 jobs:
-    build:
+    parking-service:
         docker:
             - image: circleci/golang:1.12
         environment:
             CGO_ENABLED: 0
             GOOS: linux
         working_directory: ~/soa2019_group8/parking
-        branches:
-            only:
-                - master
         steps:
             - checkout:
                 path: ~/soa2019_group8
@@ -41,3 +38,14 @@ jobs:
                 name: build code
                 command: |
                     go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
+
+workflows:
+    version: 2
+    complie:
+        jobs:
+            - parking-service:
+                filters:
+                    branches:
+                        only:
+                            - master
+
