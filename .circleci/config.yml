@@ -26,6 +26,10 @@ jobs:
                 command: |
                     go mod vendor
             - run:
+                name: run test
+                command: |
+                    go test -v ./...
+            - run:
                 name: build code
                 command: |
                     go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
