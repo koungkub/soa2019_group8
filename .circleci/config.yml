@@ -12,7 +12,6 @@ jobs:
         - master
     steps:
       - checkout:
-        path: ~/parking
 
       - run: pwd
       - run: ls -la
