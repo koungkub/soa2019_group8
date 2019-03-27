@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.12
-    working_directory: ~/soa2019_group8
+    working_directory: ~/soa2019_group8/parking
     branches:
       only:
         - master
