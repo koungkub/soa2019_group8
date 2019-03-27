@@ -11,5 +11,6 @@ jobs:
     steps:
       - checkout
 
+      - run: pwd
       - run: go get -u ./...
       - run: go test -v ./...
