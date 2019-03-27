@@ -16,6 +16,9 @@ jobs:
         steps:
             - checkout:
                 path: ~/soa2019_group8
+            - restore_cache:
+                keys:
+                    - pkg-cache
             - run:
                 name: check dependencies and download dependencies
                 command: |
@@ -25,6 +28,10 @@ jobs:
                 name: vendor a dependencies
                 command: |
                     go mod vendor
+            - save_cache:
+                key: pkg-cache
+                paths:
+                    - /go/pkg
             - run:
                 name: run test
                 command: |
