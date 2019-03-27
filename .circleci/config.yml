@@ -37,6 +37,12 @@ jobs:
                 name: build code
                 command: |
                     go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
+            - run:
+                name: build image and push to docker hub
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t koungkub/parking .
+                    docker push koungkub/parking
 workflows:
     version: 2
     complie:
