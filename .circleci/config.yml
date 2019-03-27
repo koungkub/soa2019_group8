@@ -6,13 +6,12 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.12
-    working_directory: /go/src/github.com/koungkub/soa2019_group8
+    working_directory: ~/soa2019_group8
     branches:
       only:
         - master
     steps:
       - checkout:
-        path: ~/soa2019_group8
       - run: pwd
       - run: ls -la
       - run: cd parking
