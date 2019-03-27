@@ -11,16 +11,17 @@ RUN apk add --update --no-cache git \
     && go mod download
 
 COPY . /work
-RUN go build -a -tags netgo -ldflags '-w' -o app .
+RUN go mod vendor \
+    && go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
 
-FROM alpine:3.8
-WORKDIR /go
-COPY --from=golang-build /work/app /go/app
-ENV TZ Asia/Bangkok
+# FROM alpine:3.8
+# WORKDIR /go
+# COPY --from=golang-build /work/app /go/app
+# ENV TZ Asia/Bangkok
 
-RUN apk update \
-    && apk add --update --no-cache ca-certificates tzdata
-EXPOSE 80
-EXPOSE 443
-EXPOSE 3000
-CMD [ "./app" ]
+# RUN apk update \
+#     && apk add --update --no-cache ca-certificates tzdata
+# EXPOSE 80
+# EXPOSE 443
+# EXPOSE 3000
+# CMD [ "./app" ]
