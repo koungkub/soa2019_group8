@@ -10,6 +10,8 @@ jobs:
         steps:
             - checkout:
                 path: ~/soa2019_group8
+            - setup_remote_docker: 
+                docker_layer_caching: true
             - restore_cache:
                 keys:
                     - pkg-cache-{{ arch }}-{{ checksum "go.mod" }}
