@@ -6,17 +6,26 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.12
+    environment:
+      CGO_ENABLED: 0
+      GOOS: linux
     working_directory: ~/soa2019_group8/parking
-
     branches:
       only:
         - master
     steps:
       - checkout:
           path: ~/soa2019_group8
-      - run: pwd
-      - run: ls -la
-      - run: cd parking
-      - run: ls -la
-      - run: go mod download
-      - run: go test -v ./...
+      - run:
+        name: check dependencies and download dependencies
+        command: |
+          go mod tidy
+          go mod download
+      - run:
+        name: vendor a dependencies
+        command: |
+          go mod vendor
+      - run:
+        name: build code
+        command: |
+          go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
