@@ -12,7 +12,7 @@ jobs:
         - master
     steps:
       - checkout:
-
+        path: ~/soa2019_group8
       - run: pwd
       - run: ls -la
       - run: cd parking
