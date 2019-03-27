@@ -41,4 +41,3 @@ jobs:
                 name: build code
                 command: |
                     go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
-                        
