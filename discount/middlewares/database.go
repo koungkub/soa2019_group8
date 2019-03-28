@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/echo"
 )
 
+// DatabaseTransaction : set up database as middleware
 func DatabaseTransaction(db *sql.DB) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return echo.HandlerFunc(func(c echo.Context) error {
