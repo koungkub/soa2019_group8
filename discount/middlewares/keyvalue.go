@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/echo"
 )
 
+// KeyValueTransaction : set update redis as middleware
 func KeyValueTransaction(redis *redis.Client) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return echo.HandlerFunc(func(c echo.Context) error {
