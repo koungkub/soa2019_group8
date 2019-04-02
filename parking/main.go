@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/facebookgo/grace/gracehttp"
 	"github.com/koungkub/soa2019_group8/parking/route"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -25,6 +26,8 @@ func init() {
 func main() {
 
 	routing := route.Route()
+	routing.Server.Addr = viper.GetString("PORT")
 
-	logrus.Fatal(routing.Start(viper.GetString("PORT")))
+	logrus.Info("Server Started")
+	logrus.Fatal(gracehttp.Serve(routing.Server))
 }
