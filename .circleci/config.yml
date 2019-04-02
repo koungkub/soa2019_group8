@@ -43,11 +43,60 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t koungkub/parking .
                     docker push koungkub/parking
+    discount-service:
+        docker:
+            - image: circleci/golang:1.12
+        environment:
+            CGO_ENABLED: 0
+            GOOS: linux
+        working_directory: ~/soa2019_group8/discount
+        steps:
+            - checkout:
+                path: ~/soa2019_group8
+            - setup_remote_docker: 
+                docker_layer_caching: true
+            - restore_cache:
+                keys:
+                    - pkg-cache-{{ arch }}-{{ checksum "go.mod" }}
+                    - pkd-cache
+            - run:
+                name: check dependencies and download dependencies
+                command: |
+                    go mod tidy
+                    go mod download
+            - run:
+                name: vendor a dependencies
+                command: |
+                    go mod vendor
+            - save_cache:
+                key: pkg-cache-{{ arch }}-{{ checksum "go.mod" }}
+                paths:
+                    - /go/pkg
+            - run:
+                name: run test
+                command: |
+                    go test -v ./...
+            - run:
+                name: build code
+                command: |
+                    go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
+            - run:
+                name: build image and push to docker hub
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t koungkub/discount .
+                    docker push koungkub/discount
+
 workflows:
     version: 2
     complie:
         jobs:
             - parking-service:
+                filters:
+                    branches:
+                        only:
+                            - master
+            - discount-service:
                 filters:
                     branches:
                         only:
