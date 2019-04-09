@@ -26,8 +26,9 @@ func init() {
 func main() {
 
 	routing := route.Route()
-	routing.Server.Addr = viper.GetString("PORT")
+	port := viper.GetString("PORT")
+	routing.Server.Addr = port
 
-	logrus.Info("Server Started")
+	logrus.Info("server started on ", port)
 	logrus.Fatal(gracehttp.Serve(routing.Server))
 }
