@@ -41,8 +41,6 @@ func Route() *echo.Echo {
 			AllowMethods: []string{
 				http.MethodGet,
 				http.MethodPost,
-				http.MethodPut,
-				http.MethodDelete,
 			},
 		}),
 	)
