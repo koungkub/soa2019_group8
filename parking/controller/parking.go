@@ -26,7 +26,7 @@ func EntranceParking(entrance service.Entrancer) echo.HandlerFunc {
 		if err != nil {
 			return echo.NewHTTPError(http.StatusUnprocessableEntity, "Can not entrance to parking, departmentstore id not found")
 		}
-		token, err := service.GenerateToken(id, 24*time.Hour)
+		token, err := service.GenerateToken(id, 48*time.Hour)
 		if err != nil {
 			return echo.NewHTTPError(http.StatusUnprocessableEntity, "Generate token error")
 		}
