@@ -71,7 +71,7 @@ func Route() *echo.Echo {
 
 	parking := e.Group("/parking")
 	{
-		parking.POST("/discount", controller.EnterDiscountController(new(service.Discount)))
+		parking.GET("/discount/:code", controller.EnterDiscountController(new(service.Discount)))
 	}
 
 	return e
