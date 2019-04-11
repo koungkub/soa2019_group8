@@ -17,7 +17,7 @@ func EntranceParking(entrance service.Entrancer) echo.HandlerFunc {
 
 		storeID, err := strconv.Atoi(c.Param("id"))
 		if err != nil {
-			return echo.NewHTTPError(http.StatusUnprocessableEntity, "{id} only accept type int")
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "id only accept type int")
 		}
 
 		entrance.SetID(storeID)
