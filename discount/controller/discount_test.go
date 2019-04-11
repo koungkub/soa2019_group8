@@ -16,14 +16,18 @@ import (
 
 var (
 	codeTest           = "Asdf5"
-	generateSuccessful = `{"store": "central","amount": 100,"parkID": 1}`
-	generateFailure    = `{"store": "central","amount": 100}`
+	generateSuccessful = `{"store": "central","amount": 100}`
+	token              = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjo1MTU0OTkzMTQ4LCJpYXQiOjE1NTQ5OTY3NDh9.0c2K2miwiBMvauwjwdAqt3ZREgKomAYYBPYp2aKVVDo"
 )
 
 type DiscountTest struct {
 	Store  string
 	Amount int
 	parkID int
+}
+
+func (d *DiscountTest) SetParkID(parkID int) {
+
 }
 
 func (d *DiscountTest) Clear() {
@@ -43,6 +47,26 @@ func (d *DiscountTest) EnterDiscount(c echo.Context, code string) error {
 
 func TestEnterDiscountFailure(t *testing.T) {
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	req.Header.Set("Authorization", token)
+	rec := httptest.NewRecorder()
+
+	e := echo.New()
+	c := e.NewContext(req, rec)
+
+	c.SetPath("/parking/discount/:code")
+	c.SetParamNames("code")
+	c.SetParamValues("qwerty")
+
+	testStruct := &DiscountTest{}
+
+	if assert.Error(t, EnterDiscountController(testStruct)(c)) {
+		assert.Equal(t, http.StatusOK, rec.Code)
+	}
+}
+
+func TestEnterDiscountTokenFailure(t *testing.T) {
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	req.Header.Set("Authorization", token+"a")
 	rec := httptest.NewRecorder()
 
 	e := echo.New()
@@ -61,6 +85,7 @@ func TestEnterDiscountFailure(t *testing.T) {
 
 func TestEnterDiscountPass(t *testing.T) {
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	req.Header.Set("Authorization", token)
 	rec := httptest.NewRecorder()
 
 	e := echo.New()
@@ -92,22 +117,5 @@ func TestGenerateDiscountPass(t *testing.T) {
 
 	if assert.NoError(t, GenerateDiscountController(testStruct)(c)) {
 		assert.Equal(t, http.StatusCreated, rec.Code)
-	}
-}
-
-func TestGenerateDiscountFailure(t *testing.T) {
-	req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(generateSuccessful))
-	rec := httptest.NewRecorder()
-
-	e := echo.New()
-	c := e.NewContext(req, rec)
-	c.Set("validate", validator.New())
-
-	c.SetPath("/admin/discount")
-
-	testStruct := &DiscountTest{}
-
-	if assert.Error(t, GenerateDiscountController(testStruct)(c)) {
-		assert.Equal(t, http.StatusOK, rec.Code)
 	}
 }
