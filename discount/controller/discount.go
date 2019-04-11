@@ -3,8 +3,6 @@ package controller
 import (
 	"net/http"
 
-	"github.com/sirupsen/logrus"
-
 	"gopkg.in/go-playground/validator.v9"
 
 	"github.com/koungkub/soa2019_group8/discount/service"
@@ -13,13 +11,16 @@ import (
 
 func EnterDiscountController(discounter service.Discounter) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		err := discounter.EnterDiscount(c, "7vyJmD")
+
+		code := c.Param("code")
+
+		err := discounter.EnterDiscount(c, code)
 		if err != nil {
-			logrus.Debug("err naja ", err)
+			return echo.NewHTTPError(http.StatusInternalServerError, "can not enter discount code")
 		}
 
-		return c.JSON(200, echo.Map{
-			"messgea": "sd",
+		return c.JSON(http.StatusOK, echo.Map{
+			"messgea": "enter discount successful",
 		})
 	}
 }
@@ -44,8 +45,8 @@ func GenerateDiscountController(discounter service.Discounter) echo.HandlerFunc 
 			return echo.NewHTTPError(http.StatusInternalServerError, "can not generate discount code")
 		}
 
-		return c.JSON(200, echo.Map{
-			"discountCode": discountCode,
+		return c.JSON(http.StatusCreated, echo.Map{
+			"code": discountCode,
 		})
 	}
 }
