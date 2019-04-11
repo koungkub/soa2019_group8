@@ -9,14 +9,23 @@ import (
 	"github.com/labstack/echo"
 )
 
+// EnterDiscountController : enter discount code
 func EnterDiscountController(discounter service.Discounter) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		code := c.Param("code")
+		bearer := c.Request().Header.Get("Authorization")
 
-		err := discounter.EnterDiscount(c, code)
+		token, err := service.ValidateToken(bearer[7:])
 		if err != nil {
-			return echo.NewHTTPError(http.StatusInternalServerError, "can not enter discount code")
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "token invalid"+err.Error())
+		}
+
+		discounter.SetParkID(int(token.ID))
+
+		err = discounter.EnterDiscount(c, code)
+		if err != nil {
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "can not enter discount code")
 		}
 
 		return c.JSON(http.StatusOK, echo.Map{
