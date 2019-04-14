@@ -14,9 +14,6 @@ const styles = theme => ({
     
  textTime:{
    fontSize: '10.5rem',
- },
- margin5:{
-     margin :'3rem'
  }
 })
 
@@ -34,6 +31,7 @@ class Main extends Component {
           <Divider/>
           <TextPrice/>
           </div>
+          {/* table list */}
           <Grid container>
           <Grid item xs={6}>
           
