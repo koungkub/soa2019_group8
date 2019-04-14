@@ -29,7 +29,6 @@ class Main extends Component {
         <Layout>
             <div className="container text-center">
           <h1 className={ classes.textTime }>15:00</h1>
-        
           <Arrival/>
           <div className={classes.margin5}>
           <Divider/>
@@ -44,10 +43,7 @@ class Main extends Component {
               
              <Discount/>
               </Grid>
-              </Grid>
-         
-             
-              
+              </Grid>              
           </div>
           </Layout>
           

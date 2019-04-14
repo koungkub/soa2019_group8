@@ -6,6 +6,7 @@ class Layout extends Component{
     }
     componentDidMount(){
         document.body.style.background = "#f2f2f2"
+        document.body.style.marginTop = "200px"
        }
     render(){
         return(
