@@ -7,7 +7,8 @@ import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core';
 import Layout from '../components/Layout';
 import Arrival from '../components/BorderText';
 import TextPrice from '../components/TextPrice';
-import Payment from '../components/PaymentButton'
+import Payment from '../components/PaymentButton';
+import Discount from '../components/DiscountButton';
 
 const styles = theme => ({
     
@@ -16,10 +17,7 @@ const styles = theme => ({
  },
  margin5:{
      margin :'3rem'
- },
- startBtn:{
-    fontSize: '2.9375rem',
-  }
+ }
 })
 
 class Main extends Component {
@@ -39,11 +37,13 @@ class Main extends Component {
           </div>
           <Grid container>
           <Grid item xs={6}>
+          
+          <Payment/>
               </Grid>
               <Grid item xs={6}>
-              <Payment/>
+              
+             <Discount/>
               </Grid>
-             
               </Grid>
          
              
