@@ -16,6 +16,7 @@ type Discounter interface {
 	GenerateDiscount(c echo.Context) (*string, error)
 	Clear()
 	SetParkID(parkID int)
+	ListDiscount(c echo.Context) ([]Discount, error)
 }
 
 // Discount : store a name and amount of discount
@@ -23,6 +24,42 @@ type Discount struct {
 	Store  string `json:"store" validate:"required,alphanum"`
 	Amount int    `json:"amount" validate:"required,numeric"`
 	ParkID int    `json:"-"`
+}
+
+func (d *Discount) ListDiscount(c echo.Context) ([]Discount, error) {
+
+	db := c.Get("db").(*sql.DB)
+
+	prepare, err := db.Prepare("SELECT store, amount, park_id FROM Discount WHERE park_id=?")
+	if err != nil {
+		return nil, err
+	}
+	defer prepare.Close()
+
+	rows, err := prepare.Query(d.ParkID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	discount := []Discount{}
+
+	for rows.Next() {
+		var subDiscount Discount
+		err := rows.Scan(&subDiscount.Store, &subDiscount.Amount, &subDiscount.ParkID)
+		if err != nil {
+			return nil, err
+		}
+
+		discount = append(discount, subDiscount)
+	}
+
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
+
+	return discount, nil
 }
 
 // EnterDiscount : enter a discount code and save to persistent database
