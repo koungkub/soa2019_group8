@@ -70,6 +70,7 @@ func Route() *echo.Echo {
 	parking := e.Group("/parking")
 	{
 		parking.GET("/discount/:code", controller.EnterDiscountController(new(service.Discount)), middlewares.JWTValidate())
+		parking.GET("/discount", controller.ListDiscountController(new(service.Discount)), middlewares.JWTValidate())
 	}
 
 	return e

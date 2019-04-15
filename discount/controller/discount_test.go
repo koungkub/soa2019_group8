@@ -9,6 +9,7 @@ import (
 
 	"gopkg.in/go-playground/validator.v9"
 
+	"github.com/koungkub/soa2019_group8/discount/service"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/labstack/echo"
@@ -24,6 +25,10 @@ type DiscountTest struct {
 	Store  string
 	Amount int
 	parkID int
+}
+
+func (d *DiscountTest) ListDiscount(c echo.Context) ([]service.Discount, error) {
+	return nil, nil
 }
 
 func (d *DiscountTest) SetParkID(parkID int) {
@@ -43,6 +48,23 @@ func (d *DiscountTest) EnterDiscount(c echo.Context, code string) error {
 		return nil
 	}
 	return errors.New("code error")
+}
+
+func TestListDiscount(t *testing.T) {
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	req.Header.Set("Authorization", token)
+	rec := httptest.NewRecorder()
+
+	e := echo.New()
+	c := e.NewContext(req, rec)
+
+	c.SetPath("/parking/discount")
+
+	testStruct := &DiscountTest{}
+
+	if assert.NoError(t, ListDiscountController(testStruct)(c)) {
+		assert.Equal(t, http.StatusOK, rec.Code)
+	}
 }
 
 func TestEnterDiscountFailure(t *testing.T) {

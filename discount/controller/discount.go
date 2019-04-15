@@ -9,6 +9,28 @@ import (
 	"github.com/labstack/echo"
 )
 
+// ListDiscountController : list all discount from id (token)
+func ListDiscountController(discounter service.Discounter) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		bearer := c.Request().Header.Get("Authorization")
+
+		token, err := service.ValidateToken(bearer[7:])
+		if err != nil {
+			return echo.NewHTTPError(http.StatusForbidden, "token invalid")
+		}
+
+		discounter.SetParkID(int(token.ID))
+
+		information, err := discounter.ListDiscount(c)
+		if err != nil {
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, "can not list discount")
+		}
+
+		return c.JSON(http.StatusOK, information)
+	}
+}
+
 // EnterDiscountController : enter discount code
 func EnterDiscountController(discounter service.Discounter) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -18,7 +40,7 @@ func EnterDiscountController(discounter service.Discounter) echo.HandlerFunc {
 
 		token, err := service.ValidateToken(bearer[7:])
 		if err != nil {
-			return echo.NewHTTPError(http.StatusUnprocessableEntity, "token invalid"+err.Error())
+			return echo.NewHTTPError(http.StatusForbidden, "token invalid")
 		}
 
 		discounter.SetParkID(int(token.ID))
