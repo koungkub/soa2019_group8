@@ -6,7 +6,8 @@ import {withStyles, Button, NoSsr} from '@material-ui/core';
 const styles = theme => ({
   paymentBtn:{
     fontSize: '2.9375rem',
-    background: 'red'
+    background: 'red',
+    width: 300
   }
 });
 

@@ -7,7 +7,8 @@ import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core';
 import Layout from '../components/Layout';
 import TableList from '../components/TablePolicy';
 import InputCode from '../components/InputCode';
-import Payment from '../components/PaymentButton';
+import BackButton from '../components/BackButton';
+
 const styles = theme => ({
 })
 
@@ -24,10 +25,9 @@ class Discount extends Component {
           <InputCode/>
           <Grid container>
           <Grid item xs={6} className="text-center">
-          <Payment/>
+          <BackButton/>
               </Grid>
               <Grid item xs={6} className="text-center">
-              <Payment/>
               </Grid>
               </Grid>          
           </div>
