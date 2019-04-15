@@ -9,6 +9,7 @@ import Arrival from '../components/BorderText';
 import TextPrice from '../components/TextPrice';
 import Payment from '../components/PaymentButton';
 import Discount from '../components/DiscountButton';
+import TableList from '../components/TableList';
 
 const styles = theme => ({
     
@@ -34,20 +35,19 @@ class Main extends Component {
           <Divider/>
           <TextPrice/>
           </div>
-          {/* table list */}
+          <TableList/>
+          <div className={classes.margin5}>
+          </div>
           <Grid container>
           <Grid item xs={6}>
-          
           <Payment/>
               </Grid>
               <Grid item xs={6}>
-              
              <Discount/>
               </Grid>
               </Grid>              
           </div>
           </Layout>
-          
           </NoSsr>
           </Fragment>
     );

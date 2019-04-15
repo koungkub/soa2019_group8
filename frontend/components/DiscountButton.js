@@ -20,7 +20,7 @@ class DiscountButton extends Component {
               size="large"
               fontSize="large"
               className={classes.paymentBtn}>
-                    PAYMENT
+                    DISCOUNT
               </Button>
     </NoSsr>
           </Fragment>

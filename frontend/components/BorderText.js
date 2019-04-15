@@ -4,11 +4,17 @@ import PropTypes from 'prop-types';
 import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper} from '@material-ui/core';
 
 const styles = theme => ({
+  root: {
+    width: '500px',
+    marginTop: theme.spacing.unit * 2,
+    overflowX: 'auto',
+    margin : 'auto'
+  },
   table: {
-    maxWidth: 700,
+    maxWidth: 500,
   },
   head: {
-    fontSize: '5rem'
+    fontSize: '3rem'
   },
 });
 
