@@ -43,7 +43,7 @@ class Main extends Component {
           <Payment/>
               </Grid>
               <Grid item xs={6}>
-             <Discount/>
+            <Discount/>
               </Grid>
               </Grid>              
           </div>

@@ -16,12 +16,14 @@ class DiscountButton extends Component {
     return (
       <Fragment>
         <NoSsr>
-        <Button variant="contained"  color="primary"
+        <Link href="/discount">
+        <Button variant="contained" 
               size="large"
               fontSize="large"
               className={classes.paymentBtn}>
                     DISCOUNT
               </Button>
+              </Link>
     </NoSsr>
           </Fragment>
     );

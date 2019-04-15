@@ -16,7 +16,7 @@ class PaymentButton extends Component {
     return (
       <Fragment>
         <NoSsr>
-        <Button variant="contained"  color="primary"
+        <Button variant="contained" 
               size="large"
               fontSize="large"
               className={classes.paymentBtn}>
