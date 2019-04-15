@@ -26,50 +26,38 @@ function createData(name, pay) {
   return { id, name, pay};
 }
 const rows = [
-    createData('GVIDJI406D', 300),
-    createData('KVORT897DE', 700),
-    createData('DLG0P4KFLC', 50),
-    createData('FI9GIE94V9', 30),
-    createData('4I93WI29JD', 58),
+    createData('1.โค้ดนี้ไม่สามารถใช้ข้ามสาขาได้'),
+    createData('2.แต่ละโค้ดมีระยะเวลา 30 นาที'),
+    createData('3.ทางห้างขอสงวนสิทธิ์ในการเปลี่ยนแปลง '),
   ];
 
-class TableList extends Component {
+class TablePolicy extends Component {
   render() {
     const { classes } = this.props;
     return (
       <Fragment>
-        <NoSsr>
       <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow >
-            <TableCell className={classes.head}>CODE</TableCell>
-            <TableCell align="right" className={classes.head}>PAID</TableCell>
+            <TableCell align="center" className={classes.head}>Policy</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
             <TableRow key={row.id} className={classes.bodyText}>
-              <TableCell component="th" scope="row">{row.name}</TableCell>
-              <TableCell align="right">{row.pay}</TableCell>
+              <TableCell align="center" component="th" scope="row">{row.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>
-        <TableHead>
-          <TableRow >
-            <TableCell className={classes.head}>DISCOUNT</TableCell>
-            <TableCell align="right" className={classes.head}>0</TableCell>
-          </TableRow>
-        </TableHead>
       </Table>
     </Paper>
-    </NoSsr>
           </Fragment>
     );
   }
 }
-TableList.propTypes = {
+TablePolicy.propTypes = {
   classes: PropTypes.object.isRequired,
 };
  
-export default withStyles(styles) (TableList);
+export default withStyles(styles) (TablePolicy);
