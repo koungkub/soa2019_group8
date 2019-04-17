@@ -15,7 +15,7 @@ import (
 // GetDBConnection : Get database connection
 func GetDBConnection() *sql.DB {
 
-	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
+	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true",
 		viper.GetString("DB_USERNAME"),
 		viper.GetString("DB_PASSWORD"),
 		viper.GetString("DB_HOST"),

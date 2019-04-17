@@ -62,6 +62,7 @@ func Route() *echo.Echo {
 
 	parking := e.Group("/parking")
 	{
+		parking.GET("", controller.GetTimeController(new(service.ParkingTimeService)), middlewares.JWTValidate())
 		parking.GET("/entrance/:id", controller.EntranceParking(new(service.EntranceParkingService)))
 	}
 
