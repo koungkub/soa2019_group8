@@ -48,6 +48,7 @@ func Route() *echo.Echo {
 	// Custom middleware
 	e.Use(
 		middlewares.DatabaseTransaction(repository.GetDBConnection()),
+		middlewares.CircuitBreaker(),
 	)
 
 	// Error handler
