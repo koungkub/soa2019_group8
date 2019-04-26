@@ -1,0 +1,117 @@
+version: '3.0'
+
+services: 
+  parking:
+    image: koungkub/parking
+    ports: 
+      - 3000:3000
+    environment: 
+      - APP_ENV=production
+      - PORT=:3000
+      - DB_USERNAME=parking
+      - DB_PASSWORD=P@ssw0rd
+      - DB_HOST=mysql-parking
+      - DB_PORT=3306
+      - DB_DATABASE=Parking
+      - SECRET_KEY=ilovefish
+      - DISCOUNT_SERVICE_URL=http://discount:4000
+      - DISCOUNT_SERVICE_PATH=/parking/discount
+      - LOGSTASH=logstash:5044
+      - TZ=Asia/Bangkok
+    networks: 
+      - 'soa'
+    depends_on: 
+      - mysql-parking
+      - logstash
+    command: sh -c "./wait-for mysql-parking:3306 logstash:5044 -- ./app"
+
+  discount:
+    image: koungkub/discount
+    ports: 
+      - 4000:4000
+    environment: 
+      - APP_ENV=development
+      - PORT=:4000
+      - SECRET_KEY=ilovedog
+      - DB_USERNAME=discount
+      - DB_PASSWORD=P@ssw0rd
+      - DB_HOST=mysql-discount
+      - DB_PORT=3307
+      - DB_DATABASE=Discount
+      - REDIS_HOST=redis:6379
+      - REDIS_PASSWORD=""
+      - REDIS_DATABASE=0
+      - LOGSTASH=logstash:5044
+      - TZ=Asia/Bangkok
+    networks: 
+      - 'soa'
+    depends_on: 
+      - mysql-discount
+      - logstash
+      - redis
+    command: sh -c "./wait-for mysql-discount:3307 logstash:5044 redis:6379 -- ./app"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    networks: 
+      - 'soa'
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.5.4
+    ports: 
+      - 5601:5601
+    networks: 
+      - 'soa'
+    depends_on: 
+      - elasticsearch
+
+  logstash:
+    build: .
+    ports:
+      - 5044:5044
+      - 9600:9600
+    networks: 
+      - 'soa'
+
+  mysql-parking:
+    image: mysql:5.7
+    ports: 
+      - 3306:3306
+    environment: 
+      - TZ=Asia/Bangkok
+      - MYSQL_USER=parking
+      - MYSQL_DATABASE=Parking
+      - MYSQL_PASSWORD=P@ssw0rd
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_PORT=3306
+    networks: 
+      - 'soa'
+
+  mysql-discount:
+    image: mysql:5.7
+    ports: 
+      - 3307:3306
+    environment: 
+      - TZ=Asia/Bangkok
+      - MYSQL_USER=discount
+      - MYSQL_DATABASE=Discount
+      - MYSQL_PASSWORD=P@ssw0rd
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_PORT=3306
+    networks: 
+      - 'soa'
+  
+  redis:
+    image: redis:5-alpine
+    ports: 
+      - 6379:6379
+    environment: 
+      - TZ=Asia/Bangkok
+    networks: 
+      - 'soa'
+
+networks: 
+  soa:
