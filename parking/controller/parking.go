@@ -13,6 +13,7 @@ import (
 	"github.com/labstack/echo"
 )
 
+// ExitParking : exit from parking
 func ExitParking(exit service.ChargeParker) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
