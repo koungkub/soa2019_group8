@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo"
 )
 
+// GetTimeController : get time from database
 func GetTimeController(parkingTime service.ParkingTime) echo.HandlerFunc {
 	return func(c echo.Context) error {
 

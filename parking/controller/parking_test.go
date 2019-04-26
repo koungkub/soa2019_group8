@@ -5,6 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/koungkub/soa2019_group8/parking/service"
+
 	"github.com/stretchr/testify/assert"
 
 	"github.com/labstack/echo"
@@ -65,6 +67,37 @@ func TestParkingWithBadPathParam(t *testing.T) {
 	testStruct := &TestEntrance{}
 
 	if assert.Error(t, EntranceParking(testStruct)(c)) {
+		assert.Equal(t, http.StatusOK, rec.Code)
+	}
+}
+
+type ChargeParktest struct {
+	Amount int
+	Store  string
+}
+
+func (cpt *ChargeParktest) GetDiscount(url string, token string) ([]service.ChargeParking, error) {
+	return nil, nil
+}
+
+func (cpt *ChargeParktest) CalculateDiscount(c echo.Context, id int, chp []service.ChargeParking) (float64, error) {
+	return 0.0, nil
+}
+
+func TestExitFromParkingPass(t *testing.T) {
+
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	req.Header.Set("Authorization", token)
+	rec := httptest.NewRecorder()
+
+	e := echo.New()
+	c := e.NewContext(req, rec)
+
+	c.SetPath("/parking/exit")
+
+	testStruct := &ChargeParktest{}
+
+	if assert.NoError(t, ExitParking(testStruct)(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 	}
 }
