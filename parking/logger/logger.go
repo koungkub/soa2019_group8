@@ -17,12 +17,12 @@ func GetLog() *logrus.Logger {
 
 	tcpConnection, err := net.Dial("tcp", viper.GetString("LOGSTASH"))
 	if err != nil {
-		logger.Fatal(err)
+		logger.Error(err)
 	}
 
 	hook, err := logrustash.NewHookWithConn(tcpConnection, "parking")
 	if err != nil {
-		logger.Fatal(err)
+		logger.Error(err)
 	}
 
 	logger.Hooks.Add(hook)
