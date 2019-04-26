@@ -48,7 +48,6 @@ func Route() *echo.Echo {
 	// Custom middleware
 	e.Use(
 		middlewares.DatabaseTransaction(repository.GetDBConnection()),
-		middlewares.CircuitBreaker(),
 	)
 
 	// Error handler
@@ -64,6 +63,7 @@ func Route() *echo.Echo {
 	parking := e.Group("/parking")
 	{
 		parking.GET("", controller.GetTimeController(new(service.ParkingTimeService)), middlewares.JWTValidate())
+		parking.GET("/exit", controller.ExitParking(new(service.ChargeParking)), middlewares.JWTValidate())
 		parking.GET("/entrance/:id", controller.EntranceParking(new(service.EntranceParkingService)))
 	}
 
