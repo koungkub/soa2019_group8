@@ -1,15 +1,17 @@
 package middlewares
 
 import (
+	"github.com/koungkub/soa2019_group8/discount/logger"
 	"github.com/labstack/echo"
-	"github.com/sirupsen/logrus"
 )
 
 // HTTPErrorHandler : Handle error was happend in service
 func HTTPErrorHandler(err error, c echo.Context) {
 
+	logger := logger.GetLog()
+
 	if errors, ok := err.(*echo.HTTPError); ok {
-		logrus.Error(errors.Message)
+		logger.Error(errors.Message)
 		c.JSON(errors.Code, echo.Map{
 			"message": errors.Message,
 		})
