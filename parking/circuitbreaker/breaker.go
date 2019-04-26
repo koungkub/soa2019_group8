@@ -1,10 +1,10 @@
-package middlewares
+package circuitbreaker
 
 import (
 	"io/ioutil"
 	"net/http"
+	"time"
 
-	"github.com/labstack/echo"
 	"github.com/sony/gobreaker"
 )
 
@@ -12,7 +12,7 @@ var (
 	cb *gobreaker.CircuitBreaker
 )
 
-func settingCircuitBreaker() {
+func SettingCircuitBreaker() {
 
 	var st gobreaker.Settings
 	st.Name = "HTTP GET circuit breaker"
@@ -20,9 +20,17 @@ func settingCircuitBreaker() {
 	cb = gobreaker.NewCircuitBreaker(st)
 }
 
-func getCircuitBreaker(url string) ([]byte, error) {
+func GetCircuitBreaker(url, token string) ([]byte, error) {
 	body, err := cb.Execute(func() (interface{}, error) {
-		resp, err := http.Get(url)
+		req, err := http.NewRequest(http.MethodGet, url, nil)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("Authorization", "Bearer "+token)
+		client := &http.Client{Timeout: time.Second * 10}
+
+		resp, err := client.Do(req)
 		if err != nil {
 			return nil, err
 		}
@@ -43,20 +51,4 @@ func getCircuitBreaker(url string) ([]byte, error) {
 	}
 
 	return body.([]byte), nil
-}
-
-func CircuitBreaker() echo.MiddlewareFunc {
-	return func(next echo.HandlerFunc) echo.HandlerFunc {
-		return echo.HandlerFunc(func(c echo.Context) error {
-
-			settingCircuitBreaker()
-
-			c.Set("breaker", getCircuitBreaker)
-			if err := next(c); err != nil {
-				return err
-			}
-
-			return nil
-		})
-	}
 }
