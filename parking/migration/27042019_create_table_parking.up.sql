@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `Park`;
-USE Park;
-
 DROP TABLE IF EXISTS `DepartmentStore`;
 CREATE TABLE iF NOT EXISTS `DepartmentStore` (
   id INT NOT NULL,
@@ -19,15 +16,6 @@ CREATE TABLE iF NOT EXISTS `Parking` (
   department_store_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (department_store_id) REFERENCES DepartmentStore (id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-DROP TABLE IF EXISTS `Discount`;
-CREATE TABLE iF NOT EXISTS `Discount` (
-	id INT NOT NULL AUTO_INCREMENT,
-    store VARCHAR(255) NOT NULL,
-    amount INT NOT NULL,
-    park_id INT NOT NULL,
-    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `DepartmentStore` (id, name, park_rate, discount_rate, amount_rate) VALUES (1990, 'central eastville', 20, 10, 500);

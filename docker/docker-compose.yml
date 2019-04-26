@@ -1,8 +1,8 @@
-version: '3.0'
+version: '3'
 
 services: 
   parking:
-    image: koungkub/parking
+    build: ../parking
     ports: 
       - 3000:3000
     environment: 
@@ -23,10 +23,9 @@ services:
     depends_on: 
       - mysql-parking
       - logstash
-    command: sh -c "./wait-for mysql-parking:3306 logstash:5044 -- ./app"
 
   discount:
-    image: koungkub/discount
+    build: ../discount
     ports: 
       - 4000:4000
     environment: 
@@ -49,7 +48,6 @@ services:
       - mysql-discount
       - logstash
       - redis
-    command: sh -c "./wait-for mysql-discount:3307 logstash:5044 redis:6379 -- ./app"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
@@ -83,7 +81,7 @@ services:
     environment: 
       - TZ=Asia/Bangkok
       - MYSQL_USER=parking
-      - MYSQL_DATABASE=Parking
+      - MYSQL_DATABASE=Park
       - MYSQL_PASSWORD=P@ssw0rd
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_PORT=3306
