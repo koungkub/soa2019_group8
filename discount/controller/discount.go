@@ -51,7 +51,7 @@ func EnterDiscountController(discounter service.Discounter) echo.HandlerFunc {
 		}
 
 		return c.JSON(http.StatusOK, echo.Map{
-			"messgea": "enter discount successful",
+			"message": "enter discount successful",
 		})
 	}
 }
