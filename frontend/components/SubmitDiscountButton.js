@@ -5,11 +5,16 @@ import {withStyles, Button, NoSsr} from '@material-ui/core';
 
 
 const styles = theme => ({
-  paymentBtn:{
+  greenBtn:{
     fontSize: '2.9375rem',
-    width: 300
+    width: 300,
+    background: 'green',
   }
 });
+function checkDiscountCode(e) {
+    e.preventDefault();
+    Router.back();
+  }
 
 class SubmitDiscountButton extends Component {
     
@@ -21,8 +26,9 @@ class SubmitDiscountButton extends Component {
         <Button variant="contained" color="default"
               size="large"
               fontSize="large"
-              className={classes.paymentBtn}
-              onClick={activeback}>
+              className={classes.greenBtn}
+              onClick={checkDiscountCode}
+              >
                     Submit
               </Button>
     </NoSsr>

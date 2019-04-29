@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import TableList from '../components/TablePolicy';
 import InputCode from '../components/InputCode';
 import BackButton from '../components/BackButton';
+import SubmitBtn from '../components/SubmitDiscountButton';
 
 const styles = theme => ({
 })
@@ -28,6 +29,7 @@ class Discount extends Component {
           <BackButton/>
               </Grid>
               <Grid item xs={6} className="text-center">
+              <SubmitBtn/>
               </Grid>
               </Grid>          
           </div>

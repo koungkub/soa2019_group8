@@ -1,12 +1,17 @@
-FROM node:alpine
-# Create app directory
-RUN mkdir -p /usr/src/app
+FROM node:10
+
+# Setting working directory. All the path will be relative to WORKDIR
 WORKDIR /usr/src/app
-# Install app dependencies
-COPY package.json /usr/src/app/
+
+# Installing dependencies
+COPY package*.json ./
 RUN npm install
-# Bundle app source
-COPY . /usr/src/app
+
+# Copying source files
+COPY . .
+
+# Building app
 RUN npm run build
-EXPOSE 3000
+
+# Running the app
 CMD [ "npm", "start" ]
