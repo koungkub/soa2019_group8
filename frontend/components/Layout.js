@@ -5,7 +5,8 @@ class Layout extends Component{
         super(props)
     }
     componentDidMount(){
-        document.body.style.background = "#f2f2f2"
+        document.body.style.backgroundColor = "#f2f2f2"
+        document.body.style.marginTop = "200px"
        }
     render(){
         return(
