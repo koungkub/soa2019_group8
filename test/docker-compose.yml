@@ -1,0 +1,54 @@
+version: '3'
+
+services: 
+  discount:
+    build:
+      context: ../discount
+      dockerfile: Dockerfile
+    ports: 
+      - 9090:9090
+    environment: 
+      - APP_ENV=production
+      - PORT=:9090
+      - SECRET_KEY=ilovedog
+      - DB_USERNAME=discount
+      - DB_PASSWORD=P@ssw0rd
+      - DB_HOST=mysql-discount
+      - DB_PORT=3306
+      - DB_DATABASE=Discount
+      - REDIS_HOST=redis:6379
+      - REDIS_PASSWORD=
+      - REDIS_DATABASE=0
+      - LOGSTASH=logstash:5044
+    networks: 
+      - 'soa'
+    depends_on: 
+      - mysql-discount
+      - redis
+
+  mysql-discount:
+    image: mysql:5.7
+    ports: 
+      - 3307:3306
+    environment: 
+      - TZ=Asia/Bangkok
+      - MYSQL_USER=discount
+      - MYSQL_DATABASE=Discount
+      - MYSQL_PASSWORD=P@ssw0rd
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_PORT=3306
+    networks: 
+      - 'soa'
+
+  redis:
+    image: redis:5-alpine
+    ports: 
+      - 6379:6379
+    environment: 
+      - TZ=Asia/Bangkok
+    networks: 
+      - 'soa'
+
+networks: 
+  soa:
+    driver: bridge

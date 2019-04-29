@@ -40,10 +40,10 @@ services:
       - DB_USERNAME=discount
       - DB_PASSWORD=P@ssw0rd
       - DB_HOST=mysql-discount
-      - DB_PORT=3307
+      - DB_PORT=3306
       - DB_DATABASE=Discount
       - REDIS_HOST=redis:6379
-      - REDIS_PASSWORD=""
+      - REDIS_PASSWORD=
       - REDIS_DATABASE=0
       - LOGSTASH=logstash:5044
     networks: 
@@ -52,7 +52,7 @@ services:
       - mysql-discount
       - logstash
       - redis
-    command: ["./wait-for", "mysql-discount:3307", "-t", "60", "--", 
+    command: ["./wait-for", "mysql-discount:3306", "-t", "60", "--", 
               "./wait-for", "logstash:5044", "-t", "60", "--", 
               "./wait-for", "redis:6379", "-t", "60", "--", "./app" ]
 

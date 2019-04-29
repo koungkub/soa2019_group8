@@ -11,8 +11,7 @@ RUN apk add --update --no-cache git \
     && go mod download
 
 COPY . /work
-RUN go mod vendor \
-    && go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
+RUN go build -o app
 
 FROM alpine:3.9
 
