@@ -2,35 +2,40 @@ version: '3'
 
 services: 
   parking:
-    build: ../parking
+    build:
+      context: ../parking
+      dockerfile: Dockerfile
     ports: 
-      - 3000:3000
+      - 8080:8080
     environment: 
       - APP_ENV=production
-      - PORT=:3000
+      - PORT=:8080
       - DB_USERNAME=parking
       - DB_PASSWORD=P@ssw0rd
       - DB_HOST=mysql-parking
       - DB_PORT=3306
       - DB_DATABASE=Parking
       - SECRET_KEY=ilovefish
-      - DISCOUNT_SERVICE_URL=http://discount:4000
+      - DISCOUNT_SERVICE_URL=http://discount:9090
       - DISCOUNT_SERVICE_PATH=/parking/discount
       - LOGSTASH=logstash:5044
-      - TZ=Asia/Bangkok
     networks: 
       - 'soa'
     depends_on: 
       - mysql-parking
       - logstash
+    command: ["./wait-for", "mysql-parking:3306", "-t", "60", "--",
+              "./wait-for", "logstash:5044", "-t", "60", "--", "./app" ]
 
   discount:
-    build: ../discount
+    build:
+      context: ../discount
+      dockerfile: Dockerfile
     ports: 
-      - 4000:4000
+      - 9090:9090
     environment: 
-      - APP_ENV=development
-      - PORT=:4000
+      - APP_ENV=production
+      - PORT=:9090
       - SECRET_KEY=ilovedog
       - DB_USERNAME=discount
       - DB_PASSWORD=P@ssw0rd
@@ -41,13 +46,15 @@ services:
       - REDIS_PASSWORD=""
       - REDIS_DATABASE=0
       - LOGSTASH=logstash:5044
-      - TZ=Asia/Bangkok
     networks: 
       - 'soa'
     depends_on: 
       - mysql-discount
       - logstash
       - redis
+    command: ["./wait-for", "mysql-discount:3307", "-t", "60", "--", 
+              "./wait-for", "logstash:5044", "-t", "60", "--", 
+              "./wait-for", "redis:6379", "-t", "60", "--", "./app" ]
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
@@ -73,6 +80,8 @@ services:
       - 9600:9600
     networks: 
       - 'soa'
+    depends_on: 
+      - elasticsearch
 
   mysql-parking:
     image: mysql:5.7
@@ -113,3 +122,4 @@ services:
 
 networks: 
   soa:
+    driver: bridge

@@ -15,10 +15,14 @@ RUN go mod vendor \
     && go build -a -tags netgo -ldflags '-w' -o app -mod=vendor .
 
 FROM alpine:3.9
+
 WORKDIR /go
 COPY --from=golang-build /work/app /go/app
+COPY wait-for .
 ENV TZ Asia/Bangkok
 
-RUN apk add --update --no-cache ca-certificates tzdata
-EXPOSE 3000
+RUN chmod +x wait-for \
+    && apk add --update --no-cache ca-certificates tzdata
+
+EXPOSE 8080
 CMD [ "./app" ]
