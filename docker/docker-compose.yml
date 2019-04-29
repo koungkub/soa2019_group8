@@ -24,7 +24,6 @@ services:
     depends_on: 
       - mysql-parking
       - logstash
-    command: sh -c "./wait-for mysql-parking:3306 -t 60 -- ./wait-for logstash:5044 -t 60 -- ./app"
 
   discount:
     build:
@@ -51,7 +50,6 @@ services:
       - mysql-discount
       - logstash
       - redis
-    command: sh -c "./wait-for mysql-discount:3306 -t 60 -- ./wait-for logstash:5044 -t 60 -- ./wait-for redis:6379 -t 60 -- ./app"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
