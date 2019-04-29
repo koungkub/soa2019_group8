@@ -14,8 +14,8 @@ services:
       - DB_PASSWORD=P@ssw0rd
       - DB_HOST=mysql-parking
       - DB_PORT=3306
-      - DB_DATABASE=Parking
-      - SECRET_KEY=ilovefish
+      - DB_DATABASE=Park
+      - SECRET_KEY=ilovedog
       - DISCOUNT_SERVICE_URL=http://discount:9090
       - DISCOUNT_SERVICE_PATH=/parking/discount
       - LOGSTASH=logstash:5044
