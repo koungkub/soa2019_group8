@@ -1,6 +1,11 @@
 package main
 
 import (
+	"os"
+	"os/signal"
+
+	"github.com/koungkub/soa2019_group8/discount/repository"
+
 	"github.com/facebookgo/grace/gracehttp"
 	"github.com/koungkub/soa2019_group8/discount/logger"
 	"github.com/koungkub/soa2019_group8/discount/route"
@@ -26,6 +31,18 @@ func main() {
 	routing.Server.Addr = port
 
 	logger := logger.GetLog()
+
+	sig := make(chan os.Signal, 1)
+	signal.Notify(sig, os.Interrupt)
+
+	go func() {
+		<-sig
+
+		eureka := repository.GetServiceRegistry()
+		instance := repository.GetServiceRegistryInstance()
+
+		eureka.DeregisterInstance(instance)
+	}()
 
 	logger.Info("server started on ", port)
 	logger.Fatal(gracehttp.Serve(routing.Server))

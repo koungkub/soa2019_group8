@@ -19,6 +19,7 @@ services:
       - DISCOUNT_SERVICE_URL=http://discount:9090
       - DISCOUNT_SERVICE_PATH=/parking/discount
       - LOGSTASH=logstash:5044
+      - EUREKA=http://eureka:8761/eureka
     networks: 
       - 'soa'
     depends_on: 
@@ -44,6 +45,7 @@ services:
       - REDIS_PASSWORD=
       - REDIS_DATABASE=0
       - LOGSTASH=logstash:5044
+      - EUREKA=http://eureka:8761/eureka
     networks: 
       - 'soa'
     depends_on: 
@@ -114,6 +116,13 @@ services:
       - 6379:6379
     environment: 
       - TZ=Asia/Bangkok
+    networks: 
+      - 'soa'
+
+  eureka:
+    image: springcloud/eureka
+    ports: 
+      - 8761:8761
     networks: 
       - 'soa'
 

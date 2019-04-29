@@ -52,6 +52,14 @@ func Route() *echo.Echo {
 		middlewares.ValidatorInstance(validator.New()),
 	)
 
+	// Service registry
+	eureka := repository.GetServiceRegistry()
+	instance := repository.GetServiceRegistryInstance()
+
+	eureka.RegisterInstance(instance)
+	eureka.HeartBeatInstance(instance)
+	eureka.UpdateInstanceStatus(instance, "UP")
+
 	// Error handler
 	e.HTTPErrorHandler = middlewares.HTTPErrorHandler
 

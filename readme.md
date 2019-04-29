@@ -4,5 +4,15 @@
 
 ## All service
 
-* discount service
-* parking service
+* [discount service](https://github.com/koungkub/soa2019_group8/tree/master/discount)
+* [parking service](https://github.com/koungkub/soa2019_group8/tree/master/parking)
+
+## How to run it like a boss
+
+```bash
+$ docker-compose up -d
+```
+
+## Docker hub
+
+* [docker hub](https://hub.docker.com/u/koungkub)
