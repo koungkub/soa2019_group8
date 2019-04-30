@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
-import {withStyles, Button, NoSsr} from '@material-ui/core';
+import {withStyles, Button, NoSsr, colors} from '@material-ui/core';
 
 const styles = theme => ({
-  paymentBtn:{
+  DiscountBtn:{
     fontSize: '2.9375rem',
-    background: 'red',
+    background: colors.red[900],
     width: 300
   }
 });
@@ -21,7 +21,7 @@ class DiscountButton extends Component {
         <Button variant="contained" 
               size="large"
               fontSize="large"
-              className={classes.paymentBtn}>
+              className={classes.DiscountBtn}>
                     DISCOUNT
               </Button>
               </Link>
