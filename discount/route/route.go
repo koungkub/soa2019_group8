@@ -70,15 +70,11 @@ func Route() *echo.Echo {
 		})
 	})
 
-	admin := e.Group("/admin")
+	discount := e.Group("/discount")
 	{
-		admin.POST("/discount", controller.GenerateDiscountController(new(service.Discount)))
-	}
-
-	parking := e.Group("/parking")
-	{
-		parking.GET("/discount/:code", controller.EnterDiscountController(new(service.Discount)), middlewares.JWTValidate())
-		parking.GET("/discount", controller.ListDiscountController(new(service.Discount)), middlewares.JWTValidate())
+		discount.GET("", controller.ListDiscountController(new(service.Discount)), middlewares.JWTValidate())
+		discount.GET("/:code", controller.EnterDiscountController(new(service.Discount)), middlewares.JWTValidate())
+		discount.POST("/code", controller.GenerateDiscountController(new(service.Discount)))
 	}
 
 	return e
