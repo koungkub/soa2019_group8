@@ -134,6 +134,9 @@ services:
       dockerfile: Dockerfile
     ports: 
       - 1323:1323
+    depends_on: 
+      - discount
+      - parking
     networks:
       - 'soa'
 
