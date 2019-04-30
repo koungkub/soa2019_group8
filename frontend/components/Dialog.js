@@ -31,7 +31,6 @@ class DialogPopup extends Component{
       })
     }
     componentWillReceiveProps(nexProps){
-      console.log(nexProps)
       this.setState({
         open: nexProps.open,
         setOpen: nexProps.setOpen
