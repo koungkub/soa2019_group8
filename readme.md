@@ -36,3 +36,17 @@ $ docker-compose restart parking discount
 ## API document
 
 * Comming soon
+
+## Testing
+
+run test all service
+
+```bash
+$ go test -v -cover ./...
+```
+
+run test specific service not like a boss
+
+```bash
+$ go test -v -cover ./${service.Name}/...
+```
