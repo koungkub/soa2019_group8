@@ -73,7 +73,9 @@ services:
       - elasticsearch
 
   logstash:
-    build: .
+    build:
+      context: ../logstash
+      dockerfile: Dockerfile
     ports:
       - 5044:5044
       - 9600:9600
@@ -124,6 +126,15 @@ services:
     ports: 
       - 8761:8761
     networks: 
+      - 'soa'
+
+  gateway:
+    build:
+      context: ../nginx
+      dockerfile: Dockerfile
+    ports: 
+      - 1323:1323
+    networks:
       - 'soa'
 
 networks: 
