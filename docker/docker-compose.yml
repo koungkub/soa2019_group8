@@ -17,7 +17,7 @@ services:
       - DB_DATABASE=Park
       - SECRET_KEY=ilovedog
       - DISCOUNT_SERVICE_URL=http://discount:9090
-      - DISCOUNT_SERVICE_PATH=/parking/discount
+      - DISCOUNT_SERVICE_PATH=/discount
       - LOGSTASH=logstash:5044
       - EUREKA=http://eureka:8761/eureka
     networks: 
