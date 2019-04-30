@@ -38,7 +38,6 @@ class DialogPopup extends Component{
       })
     }
     render(){
-        console.log(this.state)
         return (
             <div>
               <Dialog
