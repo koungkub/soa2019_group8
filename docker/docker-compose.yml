@@ -25,6 +25,7 @@ services:
     depends_on: 
       - mysql-parking
       - logstash
+      - eureka
 
   discount:
     build:
@@ -52,6 +53,7 @@ services:
       - mysql-discount
       - logstash
       - redis
+      - eureka
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
