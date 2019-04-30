@@ -56,10 +56,10 @@ class DialogPopup extends Component{
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={this.handleClose} color="default">
+                  <Button size="large" onClick={this.handleClose} color="default">
                     Cancel
                   </Button>
-                  <Link href= "/calculate"><Button color="primary">
+                  <Link href= "/calculate"><Button size="large" color="primary">
                     Submit
                   </Button>
                   </Link>
