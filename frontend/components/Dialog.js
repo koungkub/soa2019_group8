@@ -49,10 +49,10 @@ class DialogPopup extends Component{
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
               >
-                <DialogTitle id="alert-dialog-slide-title">{"Submit to payment"}</DialogTitle>
+                <DialogTitle id="alert-dialog-slide-title">{<h1>Submit to payment</h1>}</DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-slide-description">
-                    Do you want to submit to payment?
+                    Do you want to confirm payment?
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
