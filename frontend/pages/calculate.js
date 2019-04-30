@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
-import {Button, withStyles, NoSsr} from '@material-ui/core';
+import {Paper, withStyles, NoSsr} from '@material-ui/core';
 //components
 import Layout from '../components/Layout';
 import LogoParking from '../components/LogoParking';
@@ -23,7 +23,15 @@ class Index extends Component {
         <Layout>
         <NoSsr>
           <div className="centered container">
-          
+          <Paper>
+              <h1>Amount</h1>
+              <h1>Discount</h1>
+              <hr></hr>
+              <div className="text-center">
+              <h1>Total amount</h1>
+              <h1>50</h1>
+              </div>
+          </Paper>
           </div>
           </NoSsr>
           </Layout>
