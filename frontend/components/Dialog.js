@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-
+import Link from 'next/link'
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
@@ -30,6 +30,7 @@ class DialogPopup extends Component{
         setOpen: this.props.setClose
       })
     }
+    
     componentWillReceiveProps(nexProps){
       this.setState({
         open: nexProps.open,
@@ -58,9 +59,10 @@ class DialogPopup extends Component{
                   <Button onClick={this.handleClose} color="default">
                     Cancel
                   </Button>
-                  <Button onClick={this.handleClose} color="primary">
+                  <Link href= "/calculate"><Button color="primary">
                     Submit
                   </Button>
+                  </Link>
                 </DialogActions>
               </Dialog>
             </div>

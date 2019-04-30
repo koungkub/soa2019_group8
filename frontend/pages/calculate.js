@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
 import PropTypes from 'prop-types';
 import {Paper, withStyles, NoSsr} from '@material-ui/core';
 //components
 import Layout from '../components/Layout';
-import LogoParking from '../components/LogoParking';
 
 const styles = theme => ({
   centered: {
