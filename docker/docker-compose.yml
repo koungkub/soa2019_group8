@@ -74,7 +74,7 @@ services:
 
   logstash:
     build:
-      context: ../logstash
+      context: ./logstash
       dockerfile: Dockerfile
     ports:
       - 5044:5044
@@ -130,7 +130,7 @@ services:
 
   gateway:
     build:
-      context: ../nginx
+      context: ./nginx
       dockerfile: Dockerfile
     ports: 
       - 1323:1323
