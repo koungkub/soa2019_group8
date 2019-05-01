@@ -2,6 +2,7 @@ if (typeof window != 'undefined') {var QrReader = require('react-qr-reader')}
 import NoSSR from 'react-no-ssr';
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
+import Router from 'next/router'
 class Camera extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,8 @@ class Camera extends Component {
       axios.get(data,{
         'Access-Control-Expose-Headers': 'Authorization'
       }).then(res =>{
-        console.log(res.headers)
+        Router.push(res.headers)
+        console.log(data.split("/")
       })
     }
   }
