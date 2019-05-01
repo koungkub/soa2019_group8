@@ -20,7 +20,7 @@ class TextDurationPark extends Component {
               }).then(
                 res=>{
                   this.setState({
-                      now: moment(res.data.startTime).format(('kk:mm'))
+                      startTime: res.data.startTime
                   })
             }
             )
