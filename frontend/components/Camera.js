@@ -11,7 +11,7 @@ class Camera extends Component {
       delay: 300,
     };
     this.handleScan = this.handleScan.bind(this);
-    if(auth.apply(window.location.pathname) == true){
+    if(auth.apply() == true){
       Router.push('/main')
     }
   }

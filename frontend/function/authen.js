@@ -1,18 +1,20 @@
 import Router from 'next/router';
-function checklogin(pathname){
-  console.log(pathname)
+function checklogin(){
   try{
     token = localStorage.token
     if (token == "undefined") {
-        if(!window.location.pathname == '/scan'){
-         Router.push("/login")
+        if(location.pathname == '/scan'){
+         Router.push("/scan")
         }
-   
       }
       else {
         return true
       }
   }catch(e){
+    console.log(location.pathname)
+    if(location.pathname == '/scan'){
+      Router.push("/scan")
+     }
   }
 }
 export default checklogin
