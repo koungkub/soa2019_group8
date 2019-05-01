@@ -25,6 +25,11 @@ class TextDurationPark extends Component {
             }
             )
         }
+        setInterval(() => {
+            this.setState({
+                now:moment(this.state.startTime).format(('kk:mm'))
+
+                }), 1000});
     }
     render(){
         return (

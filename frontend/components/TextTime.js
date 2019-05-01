@@ -30,7 +30,6 @@ class TextTime extends Component {
         return (
             <Fragment>
             {this.state.startTime}
-            {console.log(this.state)}
             </Fragment>
         )
     }
