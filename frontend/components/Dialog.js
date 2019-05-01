@@ -49,7 +49,7 @@ class DialogPopup extends Component{
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
               >
-                <DialogTitle id="alert-dialog-slide-title">{<h1>Submit to payment</h1>}</DialogTitle>
+                <DialogTitle id="alert-dialog-slide-title">{'Submit to payment'}</DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-slide-description">
                     Do you want to confirm payment?
@@ -59,10 +59,9 @@ class DialogPopup extends Component{
                   <Button size="large" onClick={this.handleClose} color="default">
                     Cancel
                   </Button>
-                  <Link href= "/calculate"><Button size="large" color="primary">
+                  <Button size="large" color="primary">
                     Submit
                   </Button>
-                  </Link>
                 </DialogActions>
               </Dialog>
             </div>

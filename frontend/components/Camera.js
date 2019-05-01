@@ -9,10 +9,9 @@ class Camera extends Component {
     super(props);
     this.state = {
       delay: 300,
-      result: "No result"
     };
     this.handleScan = this.handleScan.bind(this);
-    if(auth.apply() == true){
+    if(auth.apply(window.location.pathname) == true){
       Router.push('/main')
     }
   }
@@ -21,7 +20,7 @@ class Camera extends Component {
       axios.get(data,{
         'Access-Control-Expose-Headers': 'Authorization'
       }).then(res =>{
-        localStorage.setItem('token', res.headers.Authorization)
+        localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "http://" + data.split('/')[2] + '/')
         Router.push('/main')
         console.log(data.split("/"))

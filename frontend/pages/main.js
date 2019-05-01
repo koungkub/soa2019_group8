@@ -10,6 +10,8 @@ import TextPrice from '../components/TextPrice';
 import Payment from '../components/PaymentButton';
 import Discount from '../components/DiscountButton';
 import TableList from '../components/TableList';
+//function
+import Parking from '../function/parking';
 
 const styles = theme => ({
     
@@ -22,8 +24,8 @@ const styles = theme => ({
 })
 
 class Main extends Component {
-  
   render() {
+    console.log(Parking.prototype.getCurrentTime())
     const { classes } = this.props;
     return (
       <Fragment>
