@@ -26,9 +26,9 @@ class TextDurationPark extends Component {
             )
         }
         setInterval(() => {
+            let presentTime = moment().toISOString();
             this.setState({
-                now:moment(this.state.startTime).format(('kk:mm'))
-
+                // now: moment(presentTime).subtract(this.state.startTime).format("kk:mm:ss")
                 }), 1000});
     }
     render(){
