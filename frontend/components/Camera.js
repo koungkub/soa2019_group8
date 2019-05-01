@@ -3,6 +3,7 @@ import NoSSR from 'react-no-ssr';
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import Router from 'next/router'
+import auth from '../function/authen'
 class Camera extends Component {
   constructor(props) {
     super(props);
@@ -11,14 +12,19 @@ class Camera extends Component {
       result: "No result"
     };
     this.handleScan = this.handleScan.bind(this);
+    if(auth.apply() == true){
+      Router.push('/main')
+    }
   }
   handleScan(data) {
     if (data) {
       axios.get(data,{
         'Access-Control-Expose-Headers': 'Authorization'
       }).then(res =>{
-        Router.push(res.headers)
-        console.log(data.split("/")
+        localStorage.setItem('token', res.headers.Authorization)
+        localStorage.setItem('rootapi', "http://" + data.split('/')[2] + '/')
+        Router.push('/main')
+        console.log(data.split("/"))
       })
     }
   }
