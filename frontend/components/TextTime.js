@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import axios from 'axios'
 //function
+import moment from 'moment'
 import auth from '../function/authen'
 class TextTime extends Component {
     constructor(props){
