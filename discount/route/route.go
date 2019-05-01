@@ -37,10 +37,14 @@ func Route() *echo.Echo {
 				echo.HeaderAuthorization,
 				echo.HeaderAcceptEncoding,
 				echo.HeaderContentLength,
+				echo.HeaderAccessControlExposeHeaders,
 			},
 			AllowMethods: []string{
 				http.MethodGet,
 				http.MethodPost,
+			},
+			ExposeHeaders: []string{
+				echo.HeaderAuthorization,
 			},
 		}),
 	)
