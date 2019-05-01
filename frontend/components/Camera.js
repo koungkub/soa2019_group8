@@ -14,12 +14,12 @@ class Camera extends Component {
     if(auth.apply() == true){
       Router.push('/main')
     }
+    console.log(auth.apply())
   }
   handleScan(data) {
     if (data) {
-      axios.get(data,{
-        'Access-Control-Expose-Headers': 'Authorization'
-      }).then(res =>{
+      axios.get(data).then(res =>{
+        console.log(data)
         localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "http://" + data.split('/')[2] + '/')
         Router.push('/main')

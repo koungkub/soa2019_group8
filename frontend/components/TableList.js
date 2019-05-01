@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
 import PropTypes from 'prop-types';
 import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
-
+//functiong
+import auth from '../function/authen';
 const styles = theme => ({
      root: {
     width: '600px',
@@ -34,6 +34,9 @@ const rows = [
   ];
 
 class TableList extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const { classes } = this.props;
     return (

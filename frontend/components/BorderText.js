@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
 import PropTypes from 'prop-types';
 import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper} from '@material-ui/core';
-
+import TextTimeStart from './TextTime';
 const styles = theme => ({
   root: {
     width: '500px',
@@ -29,7 +28,7 @@ class BorderText extends Component {
         <TableHead>
           <TableRow >
             <TableCell className={classes.head}>ARRIVAL</TableCell>
-            <TableCell align="right" className={classes.head}>12:00</TableCell>
+            <TableCell align="right" className={classes.head}><TextTimeStart/></TableCell>
           </TableRow>
         </TableHead>
       </Table>
