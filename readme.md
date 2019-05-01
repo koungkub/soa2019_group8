@@ -35,7 +35,9 @@ $ docker-compose restart parking discount
 
 ## API document
 
-* Comming soon
+using [cotton](https://github.com/chonla/cotton)
+
+* [doc](https://github.com/koungkub/soa2019_group8/tree/master/doc)
 
 ## Testing
 
