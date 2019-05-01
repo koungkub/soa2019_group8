@@ -7,8 +7,8 @@ class TextDurationPark extends Component {
     constructor(props){
         super(props)
         this.state = {
-            startTime : ""
-            
+            startTime : '',
+            now: ''
         }
     }
     componentDidMount(){
@@ -19,9 +19,8 @@ class TextDurationPark extends Component {
                 }
               }).then(
                 res=>{
-                console.log(res)
                   this.setState({
-                      startTime: moment(res.data.startTime).format(('kk:mm'))
+                      now: moment(res.data.startTime).format(('kk:mm'))
                   })
             }
             )
@@ -30,8 +29,7 @@ class TextDurationPark extends Component {
     render(){
         return (
             <Fragment>
-            {this.state.startTime}
-            {console.log(this.state)}
+            {this.state.now}
             </Fragment>
         )
     }
