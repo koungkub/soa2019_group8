@@ -3,7 +3,7 @@ import axios from 'axios'
 //function
 import moment from 'moment'
 import auth from '../function/authen'
-class TextTime extends Component {
+class TextDurationPark extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -19,6 +19,7 @@ class TextTime extends Component {
                 }
               }).then(
                 res=>{
+                console.log(res)
                   this.setState({
                       startTime: moment(res.data.startTime).format(('kk:mm'))
                   })
@@ -35,4 +36,4 @@ class TextTime extends Component {
         )
     }
 }
-export default TextTime
+export default TextDurationPark
