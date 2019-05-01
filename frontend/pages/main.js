@@ -2,16 +2,15 @@ import React, { Component, Fragment } from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
 import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core';
-
+import authen from '../function/authen'
 //components
 import Layout from '../components/Layout';
+import TextTime from '../components/TextTime'
 import Arrival from '../components/BorderText';
 import TextPrice from '../components/TextPrice';
 import Payment from '../components/PaymentButton';
 import Discount from '../components/DiscountButton';
 import TableList from '../components/TableList';
-//function
-import Parking from '../function/parking';
 
 const styles = theme => ({
     
@@ -24,15 +23,15 @@ const styles = theme => ({
 })
 
 class Main extends Component {
+ 
   render() {
-    console.log(Parking.prototype.getCurrentTime())
     const { classes } = this.props;
     return (
       <Fragment>
           <NoSsr>
         <Layout>
             <div className="container text-center">
-          <h1 className={ classes.textTime }>15:00</h1>
+          <h1 className={ classes.textTime }><TextTime/></h1>
           <Arrival/>
           <div className={classes.margin5}>
           <Divider/>
