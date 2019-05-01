@@ -10,7 +10,7 @@ import TextPrice from '../components/TextPrice';
 import Payment from '../components/PaymentButton';
 import Discount from '../components/DiscountButton';
 import TableList from '../components/TableList';
-import TextDurationPark from '../components/TextDurationPark'
+import ParkingTime from '../components/ParkingTime'
 const styles = theme => ({
     
  textTime:{
@@ -30,7 +30,7 @@ class Main extends Component {
           <NoSsr>
         <Layout>
             <div className="container text-center">
-          <h1 className={ classes.textTime }><TextDurationPark/></h1>
+          <h1 className={ classes.textTime }><ParkingTime/></h1>
           <Arrival/>
           <div className={classes.margin5}>
           <Divider/>

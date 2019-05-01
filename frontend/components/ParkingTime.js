@@ -1,11 +1,16 @@
 // import NoSSR from 'react-no-ssr';
 import React, { Component } from 'react';
+import axios from 'axios'
+//function
+import auth from '../function/authen'
+
 class ParkingTime extends Component {
   constructor(props) {
     super(props);
     this.state = {
       parking: 'Please wait',
       curTime: '',
+      startTime: ''
     };
   }
   msToTime(s) {
@@ -15,15 +20,27 @@ class ParkingTime extends Component {
     s = (s - secs) / 60;
     let mins = s % 60;
     let hrs = (s - mins) / 60;
-    
+   
     return (hrs < 10 ? ("0"+ hrs) : hrs) + ':' + (mins < 10 ? ("0"+ mins) : mins);
   }
   componentDidMount() {
-    var arriveTime = new Date(2019, 1, 7, 0, 32);
+    if(auth.apply() == true){
+      axios.get((localStorage.rootapi + 'parking') ,{
+          headers: {
+            'Authorization': localStorage.token
+          }
+        }).then(
+          res=>{
+            this.setState({
+                startTime: new Date(res.data.startTime)
+            })
+      }
+      )
+  }
     setInterval( () => {
         this.setState({
           curTime : new Date(),
-          parking : this.state.curTime - arriveTime < 0 ? "Please wait" : this.msToTime(this.state.curTime - arriveTime)
+          parking : this.state.curTime - this.state.startTime < 0 ? "Please wait" : this.msToTime(this.state.curTime - this.state.startTime)
         })
     },1000)
   }
@@ -33,11 +50,7 @@ class ParkingTime extends Component {
   render() {
     return (
       <div>
-        <p>{typeof(this.state.parking) == true || this.state.parking.toLocaleString()}</p>
-
-        {/* <NoSSR>
-        
-        </NoSSR> */}
+        {typeof(this.state.parking) == true || this.state.parking.toLocaleString()}
       </div>
     );
   }
