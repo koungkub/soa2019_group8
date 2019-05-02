@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
+import TableDiscount from './TableBodyDiscountCode';
 //functiong
 import auth from '../function/authen';
 const styles = theme => ({
@@ -21,6 +22,8 @@ const styles = theme => ({
       fontSize: '2rem'
   }
 });
+
+
 let id = 0;
 function createData(name, pay) {
   id += 1;
@@ -37,19 +40,21 @@ class TableList extends Component {
   }
   componentDidMount(){
     let listdata = []
-    axios.get(localStorage.rootapi + 'discount',{
-      headers: {
-        'Authorization': localStorage.token
-      }}
-      ).then(res=>{
-      res.data.forEach(data => {
-        listdata.push(createData(data.store, data.amount))
-      });
-      this.setState({
-        rows : listdata
+    if(auth.apply() == true){
+      axios.get(localStorage.rootapi + 'discount',{
+        headers: {
+          'Authorization': localStorage.token
+        }}
+        ).then(res=>{
+        res.data.forEach(data => {
+          listdata.push(createData(data.store, data.amount))
+        });
+        this.setState({
+          rows : listdata
+        })
       })
-    })
-    console.log(this.state.rows)
+    }
+    
   }
   render() {
     const { classes } = this.props;
@@ -66,10 +71,7 @@ class TableList extends Component {
         </TableHead>
         <TableBody>
           {this.state.rows.map(row => (
-            <TableRow key={row.id} className={classes.bodyText}>
-              <TableCell component="th" scope="row">{row.name}</TableCell>
-              <TableCell align="right">{row.pay}</TableCell>
-            </TableRow>
+            <TableDiscount key ={row.id} data = {row}/>
           ))}
         </TableBody>
         <TableHead>
