@@ -18,7 +18,9 @@ class Discount extends Component {
       code: ''
     }
   handleCode = (value) =>{
-    console.log(value)
+    this.setState({
+      code : value
+    })
   }
   render() {
     const { classes } = this.props;
