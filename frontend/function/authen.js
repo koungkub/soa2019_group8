@@ -3,8 +3,8 @@ import Router from 'next/router';
 function checklogin(){
   try{
     const token = localStorage.token
-    if (token == "undefined") {
-        if(location.pathname == '/scan'){
+    if (typeof(token) == "undefined") {
+        if(location.pathname != '/scan'){
           Router.push("/scan")
         }
         return false
@@ -14,7 +14,7 @@ function checklogin(){
       }
   }catch(e){
     console.log(e)
-    if(location.pathname == '/scan'){
+    if(location.pathname != '/scan'){
       Router.push("/scan")
      }
      return false

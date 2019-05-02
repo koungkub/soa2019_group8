@@ -9,13 +9,12 @@ class Camera extends Component {
     super(props);
     this.state = {
       delay: 300,
+      result:''
     };
     this.handleScan = this.handleScan.bind(this);
     if(auth.apply() == true){
       Router.push('/main')
     }
-    
-    console.log(auth.apply())
   }
   handleScan(data) {
     if (data) {

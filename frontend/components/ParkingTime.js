@@ -36,13 +36,14 @@ class ParkingTime extends Component {
             })
       }
       )
-  }
-    setInterval( () => {
+      setInterval( () => {
         this.setState({
           curTime : new Date(),
           parking : this.state.curTime - this.state.startTime < 0 ? "Please wait" : this.msToTime(this.state.curTime - this.state.startTime)
         })
     },1000)
+  }
+      
   }
   componentWillUnmount() {
     clearInterval(this.intervalID);
