@@ -9,13 +9,12 @@ class Camera extends Component {
     super(props);
     this.state = {
       delay: 300,
+      result:''
     };
     this.handleScan = this.handleScan.bind(this);
     if(auth.apply() == true){
       Router.push('/main')
     }
-    
-    console.log(auth.apply())
   }
   handleScan(data) {
     if (data) {
@@ -23,7 +22,7 @@ class Camera extends Component {
         console.log(data)
         localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "http://" + data.split('/')[2] + '/')
-        Router.push('/main')
+        Router.replace('/main')
         console.log(data.split("/"))
       })
     }
