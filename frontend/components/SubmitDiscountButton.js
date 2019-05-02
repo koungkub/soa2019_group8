@@ -20,26 +20,27 @@ class SubmitDiscountButton extends Component {
       code : ''
     }
   }  
-  componentWillMount(){
-  
-    console.log(this.props)
+  componentWillReceiveProps(nextprops){
     this.setState({
-      code: this.props.code
+      code: nextprops.code
     })
-  }  
+    
+  }
   checkDiscountCode = () => {
-    axios.get(localStorage.rootapi +'discount/' + this.state.code, {
+    let path = (localStorage.rootapi) + ('discount/') + (this.state.code)
+    axios.get(path, {
       headers: {
         'Authorization': localStorage.token
       }
     }).then(
       Router.replace('/main')
-    ).catch(
+    ).catch(e =>{
       console.log(e)
-    )
+    })
 
   }
   render() {
+    console.log(this.state.code)
     const { classes } = this.props;
     return (
       <Fragment>
