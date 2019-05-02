@@ -18,6 +18,7 @@ class DiscountButton extends Component {
         this.setState({
           [code]: event.target.value,
         });
+        this.props.onSelectCode(this.state.code)
       };
   render() {
     const { classes } = this.props;

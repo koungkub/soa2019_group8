@@ -22,7 +22,7 @@ class Camera extends Component {
         console.log(data)
         localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "http://" + data.split('/')[2] + '/')
-        Router.push('/main')
+        Router.replace('/main')
         console.log(data.split("/"))
       })
     }

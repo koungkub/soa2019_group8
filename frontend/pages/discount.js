@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link'
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core';
 
 //components
@@ -13,7 +13,13 @@ import SubmitBtn from '../components/SubmitDiscountButton';
 const styles = theme => ({
 })
 
-class Discount extends Component {
+class Discount extends Component { 
+   state = {
+      code: ''
+    }
+  handleCode = (value) =>{
+    console.log(value)
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -23,13 +29,13 @@ class Discount extends Component {
             <div className="container">
           <TableList/>
           <h1>DISCOUNT</h1>
-          <InputCode/>
+          <InputCode onSelectCode = {this.handleCode}/>
           <Grid container>
           <Grid item xs={6} className="text-center">
           <BackButton/>
               </Grid>
               <Grid item xs={6} className="text-center">
-              <SubmitBtn/>
+              <SubmitBtn code={this.state.code}/>
               </Grid>
               </Grid>          
           </div>
