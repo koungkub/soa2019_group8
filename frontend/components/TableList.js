@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
 //functiong
 import auth from '../function/authen';
@@ -25,17 +26,30 @@ function createData(name, pay) {
   id += 1;
   return { id, name, pay};
 }
-const rows = [
-    createData('GVIDJI406D', 300),
-    createData('KVORT897DE', 700),
-    createData('DLG0P4KFLC', 50),
-    createData('FI9GIE94V9', 30),
-    createData('4I93WI29JD', 58),
-  ];
+
 
 class TableList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      rows: []
+    }
+  }
+  componentDidMount(){
+    let listdata = []
+    axios.get(localStorage.rootapi + 'discount',{
+      headers: {
+        'Authorization': localStorage.token
+      }}
+      ).then(res=>{
+      res.data.forEach(data => {
+        listdata.push(createData(data.store, data.amount))
+      });
+      this.setState({
+        rows : listdata
+      })
+    })
+    console.log(this.state.rows)
   }
   render() {
     const { classes } = this.props;
@@ -46,12 +60,12 @@ class TableList extends Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow >
-            <TableCell className={classes.head}>CODE</TableCell>
+            <TableCell className={classes.head}>STORE</TableCell>
             <TableCell align="right" className={classes.head}>PAID</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {this.state.rows.map(row => (
             <TableRow key={row.id} className={classes.bodyText}>
               <TableCell component="th" scope="row">{row.name}</TableCell>
               <TableCell align="right">{row.pay}</TableCell>
