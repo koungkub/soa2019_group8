@@ -14,6 +14,7 @@ class Camera extends Component {
     if(auth.apply() == true){
       Router.push('/main')
     }
+    
     console.log(auth.apply())
   }
   handleScan(data) {
