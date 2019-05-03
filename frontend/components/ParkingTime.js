@@ -5,6 +5,7 @@ import axios from 'axios'
 import auth from '../function/authen'
 
 class ParkingTime extends Component {
+  intervalID = 0
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +37,7 @@ class ParkingTime extends Component {
             })
       }
       )
-      setInterval( () => {
+      this.intervalID = setInterval( () => {
         this.setState({
           curTime : new Date(),
           parking : this.state.curTime - this.state.startTime < 0 ? "Please wait" : this.msToTime(this.state.curTime - this.state.startTime)

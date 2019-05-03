@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { NoSsr} from '@material-ui/core';
 import axios from 'axios'
 
 
 import auth from '../function/authen'
 
 class TextPrice extends Component {
+  intervalPrice = 0
   state = {
     curTime: '',
     startTime: '',
@@ -26,7 +26,7 @@ class TextPrice extends Component {
         parkRate: res.data.parkRate
       })
     })
-   setInterval( () => {
+    this.intervalPrice = setInterval( () => {
       this.setState({
         curTime : new Date(),
         amountHour : this.state.curTime - this.state.startTime < 0 ? 0 : Math.floor(new Date(this.state.curTime - this.state.startTime)/3600000),
@@ -39,17 +39,15 @@ class TextPrice extends Component {
   },1000)
 }
 }
-componentWillMount(){
-  
+componentWillUnMount(){
+  clearInterval(this.intervalPrice)
 }
   render() {
     return (
       <Fragment>
-        <NoSsr>
       {this.state.price} Bath
-    </NoSsr>
-          </Fragment>
+      </Fragment>
     );
   }
 }
-export default (TextPrice);
+export default TextPrice;

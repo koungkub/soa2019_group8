@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
+import {Table , withStyles, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
 
 //component
 import TableDiscount from './TableBodyDiscountCode';
@@ -21,9 +21,6 @@ const styles = theme => ({
   head: {
     fontSize: '2rem'
   },
-  bodyText: {
-      fontSize: '2rem'
-  }
 });
 
 
