@@ -32,14 +32,7 @@ class Thank extends Component {
             <LogoParking></LogoParking>
             </Grid>
           <Grid item xs={12}>
-            <Link href="/scan">
-              <Button variant="outlined" color="default"
-              size="large"
-              fontSize="large"
-              className={classes.startBtn}>
-              THANK YOU
-              </Button>
-            </Link>
+              THANK YOU !! 
             </Grid>
              </Grid>
           </NoSsr>
