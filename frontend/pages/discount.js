@@ -44,7 +44,7 @@ class Discount extends Component {
           <BackButton/>
               </Grid>
               <Grid item xs={6} className="text-center">
-              <SubmitBtn code={this.state.code} error={this.handleError}/>
+              <SubmitBtn code={this.state.code} errorhandle={this.handleError}/>
               <AlertError error={this.state.error}/>
               </Grid>
               </Grid>          

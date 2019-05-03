@@ -32,10 +32,12 @@ class SubmitDiscountButton extends Component {
       headers: {
         'Authorization': localStorage.token
       }
-    }).then(
+    }).then(()=>{
+      console.log("success")
       Router.replace('/main')
-    ).catch(e =>{
-      console.log(e)
+    }).catch(e =>{
+      console.log("fail")
+      this.props.errorhandle(true)
     })
 
   }
