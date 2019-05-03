@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {withStyles, Button, NoSsr} from '@material-ui/core';
 import DialogPopup from './Dialog';
 import Axios from 'axios';
-
+import router from 'next/router'
 const styles = theme => ({
   signoutBtn:{
     fontSize: '1.575rem',
@@ -22,6 +22,7 @@ class SignoutButton extends Component {
       localStorage.removeItem('token')
       localStorage.removeItem('rootapi')
       console.log('success')
+      router.replace('/thank')
     }).catch(e=>{
       console.log('error')
     })
