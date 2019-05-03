@@ -20,7 +20,9 @@ const variantIcon = {
   error: ErrorIcon,
   info: InfoIcon
 };
-
+function TransitionLeft(props) {
+  return <Slide {...props} direction="left" />;
+}
 const styles1 = theme => ({
   error: {
     backgroundColor: theme.palette.error.dark
@@ -111,7 +113,7 @@ componentWillReceiveProps(nextprops){
             horizontal: "left"
           }}
           open={this.state.open}
-          autoHideDuration={6000}
+          autoHideDuration={5000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper
