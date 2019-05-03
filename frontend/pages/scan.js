@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
-import {Button, Grid, withStyles, NoSsr} from '@material-ui/core';
+import {Grid, withStyles, NoSsr} from '@material-ui/core';
 //components
 import Layout from '../components/Layout';
 import Camera from '../components/Camera';
