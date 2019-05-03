@@ -14,10 +14,6 @@ const styles = theme => ({
 class SignoutButton extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      open: this.props.close,
-      setOpen: this.props.setClose
-    }
   }
   handleSignout = () => {
     Axios.get(localStorage.rootapi + 'parking/exit',{headers:{
