@@ -7,6 +7,7 @@ import TextPrice from '../components/TextPrice';
 import SignoutBtn from '../components/SignoutButton'
 import TextDiscount from '../components/TextDiscount'
 import TextTotal from '../components/TextTotalPrice'
+import AlertError from '../components/AlertError';
 const styles = theme => ({
   centered: {
     position: 'fixed',
@@ -31,7 +32,8 @@ const styles = theme => ({
 class Calculate extends Component {
   state = {
     price: 0,
-    discount: 0
+    discount: 0,
+    error: false
   }
   handlePrice = (value) =>{
     this.setState({
@@ -43,8 +45,15 @@ class Calculate extends Component {
       discount : value
     })
   }
+  handleError = (value) =>{
+    this.setState({
+      error : value
+    })
+  }
+  
   render() {
     const { classes } = this.props;
+    console.log(this.state.error)
     return (
       <Fragment>
         <Layout>
@@ -75,7 +84,8 @@ class Calculate extends Component {
           </Paper>
           </div>
           <div className="text-center m-5">
-          <SignoutBtn/>
+          <SignoutBtn errorvar={this.handleError}/>
+          <AlertError error={this.state.error}/>
           </div>
           </NoSsr>
           </Layout>

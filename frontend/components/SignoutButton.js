@@ -23,6 +23,7 @@ class SignoutButton extends Component {
       router.replace('/thank')
     }).catch(e=>{
       console.log('error')
+      this.props.errorvar(true)
     })
   }
   render() {
