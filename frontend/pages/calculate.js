@@ -53,7 +53,6 @@ class Calculate extends Component {
   
   render() {
     const { classes } = this.props;
-    console.log(this.state.error)
     return (
       <Fragment>
         <Layout>
