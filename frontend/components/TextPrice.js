@@ -1,23 +1,17 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {withStyles, NoSsr} from '@material-ui/core';
+import { NoSsr} from '@material-ui/core';
 import axios from 'axios'
 
 
 import auth from '../function/authen'
-const styles = theme => ({
-});
 
 class TextPrice extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      curTime: '',
-      startTime: '',
-      amountHour: 0,
-      price: 0,
-      parkRate:0
-    }
+  state = {
+    curTime: '',
+    startTime: '',
+    amountHour: 0,
+    price: 0,
+    parkRate:0
   }
   componentDidMount(){
     if(auth.apply() == true){
@@ -32,7 +26,7 @@ class TextPrice extends Component {
         parkRate: res.data.parkRate
       })
     })
-    setInterval( () => {
+   let a= setInterval( () => {
       this.setState({
         curTime : new Date(),
         amountHour : this.state.curTime - this.state.startTime < 0 ? 0 : Math.floor(new Date(this.state.curTime - this.state.startTime)/3600000),
@@ -43,11 +37,13 @@ class TextPrice extends Component {
       }catch{
       }
   },1000)
-
+ clearInterval(a)
 }
+}
+componentWillMount(){
+  
 }
   render() {
-    const { classes } = this.props;
     return (
       <Fragment>
         <NoSsr>
@@ -57,8 +53,4 @@ class TextPrice extends Component {
     );
   }
 }
-TextPrice.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
- 
-export default withStyles(styles) (TextPrice);
+export default (TextPrice);

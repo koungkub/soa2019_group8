@@ -59,6 +59,7 @@ class TextPrice extends Component {
     },5000) 
   }
 }
+
   render() {
     const { classes } = this.props;
     return (
