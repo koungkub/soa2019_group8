@@ -37,7 +37,7 @@ class Thank extends Component {
               size="large"
               fontSize="large"
               className={classes.startBtn}>
-              SCAN QR CODE
+              THANK YOU
               </Button>
             </Link>
             </Grid>
