@@ -21,7 +21,7 @@ class Camera extends Component {
       axios.get(data).then(res =>{
         console.log(data)
         localStorage.setItem('token', res.headers.authorization)
-        localStorage.setItem('rootapi', "http://" + data.split('/')[2] + '/')
+        localStorage.setItem('rootapi', "https://" + data.split('/')[2] + '/')
         Router.replace('/main')
         console.log(data.split("/"))
       })

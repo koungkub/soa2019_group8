@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Router from 'next/router'
 import PropTypes from 'prop-types';
+import Router from 'next/router'
 import {withStyles, Button, NoSsr} from '@material-ui/core';
-
+import axios from 'axios'
 
 const styles = theme => ({
   greenBtn:{
@@ -11,13 +11,36 @@ const styles = theme => ({
     background: 'green',
   }
 });
-function checkDiscountCode(e) {
-    e.preventDefault();
-    Router.back();
-  }
+
 
 class SubmitDiscountButton extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      code : ''
+    }
+  }  
+  componentWillReceiveProps(nextprops){
+    this.setState({
+      code: nextprops.code
+    })
     
+  }
+  checkDiscountCode = () => {
+    let path = (localStorage.rootapi) + ('discount/') + (this.state.code)
+    axios.get(path, {
+      headers: {
+        'Authorization': localStorage.token
+      }
+    }).then(()=>{
+      console.log("success")
+      Router.replace('/main')
+    }).catch(e =>{
+      console.log("fail")
+      this.props.errorhandle(true)
+    })
+
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -27,7 +50,7 @@ class SubmitDiscountButton extends Component {
               size="large"
               fontSize="large"
               className={classes.greenBtn}
-              onClick={checkDiscountCode}
+              onClick={this.checkDiscountCode}
               >
                     Submit
               </Button>

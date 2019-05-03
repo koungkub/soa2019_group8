@@ -1,28 +1,53 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {withStyles, NoSsr} from '@material-ui/core';
+import axios from 'axios'
 
-const styles = theme => ({
-    root:{
-        fontSize: '5rem',
-        textAlign: 'center'
-    }
-});
+
+import auth from '../function/authen'
 
 class TextPrice extends Component {
+  intervalPrice = 0
+  state = {
+    curTime: '',
+    startTime: '',
+    amountHour: 0,
+    price: 0,
+    parkRate:0
+  }
+  componentDidMount(){
+    if(auth.apply() == true){
+      
+    axios.get(localStorage.rootapi + 'parking', {
+      headers:{
+        'Authorization': localStorage.token
+      }
+    }).then(res=>{
+      this.setState({
+        startTime: new Date(res.data.startTime),
+        parkRate: res.data.parkRate
+      })
+    })
+    this.intervalPrice = setInterval( () => {
+      this.setState({
+        curTime : new Date(),
+        amountHour : this.state.curTime - this.state.startTime < 0 ? 0 : Math.floor(new Date(this.state.curTime - this.state.startTime)/3600000),
+        price : this.state.amountHour * this.state.parkRate
+      })
+      try{
+        this.props.onPrice(this.state.price)
+      }catch{
+      }
+  },1000)
+}
+}
+componentWillUnMount(){
+  clearInterval(this.intervalPrice)
+}
   render() {
-    const { classes } = this.props;
     return (
       <Fragment>
-        <NoSsr>
-      <p className={classes.root}>0 Bath</p>
-    </NoSsr>
-          </Fragment>
+      {this.state.price} Bath
+      </Fragment>
     );
   }
 }
-TextPrice.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
- 
-export default withStyles(styles) (TextPrice);
+export default TextPrice;

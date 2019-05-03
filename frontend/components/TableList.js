@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
+import {Table , withStyles, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
+
+//component
 import TableDiscount from './TableBodyDiscountCode';
+import TextDiscount from './TextDiscount';
 //functiong
 import auth from '../function/authen';
 const styles = theme => ({
@@ -18,9 +21,6 @@ const styles = theme => ({
   head: {
     fontSize: '2rem'
   },
-  bodyText: {
-      fontSize: '2rem'
-  }
 });
 
 
@@ -46,21 +46,19 @@ class TableList extends Component {
           'Authorization': localStorage.token
         }}
         ).then(res=>{
-        res.data.forEach(data => {
+          res.data.forEach(data => {
           listdata.push(createData(data.store, data.amount))
         });
         this.setState({
           rows : listdata
         })
       })
-    }
-    
   }
+}
   render() {
     const { classes } = this.props;
     return (
       <Fragment>
-        <NoSsr>
       <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
@@ -77,12 +75,11 @@ class TableList extends Component {
         <TableHead>
           <TableRow >
             <TableCell className={classes.head}>DISCOUNT</TableCell>
-            <TableCell align="right" className={classes.head}>0</TableCell>
+            <TableCell align="right" className={classes.head}><TextDiscount/></TableCell>
           </TableRow>
         </TableHead>
       </Table>
     </Paper>
-    </NoSsr>
           </Fragment>
     );
   }

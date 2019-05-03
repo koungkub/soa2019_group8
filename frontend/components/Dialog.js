@@ -31,6 +31,8 @@ class DialogPopup extends Component{
       })
     }
     handleSubmit = () => {
+      
+      this.handleClose()
       Router.push('/calculate')
     }
     
