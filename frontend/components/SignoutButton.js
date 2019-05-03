@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
 import PropTypes from 'prop-types';
 import {withStyles, Button, NoSsr} from '@material-ui/core';
-import DialogPopup from './Dialog';
 import Axios from 'axios';
 import router from 'next/router'
 const styles = theme => ({
@@ -40,7 +38,6 @@ class SignoutButton extends Component {
               onClick={this.handleSignout}>
                     PRESS TO SIGNOUT
         </Button>
-        <DialogPopup open={this.state.open} setOpen={this.state.setOpen}/>
     </NoSsr>
           </Fragment>
     );
