@@ -30,12 +30,6 @@ class Scan extends Component {
             <div className="m-4"></div>
           <Grid item xs={12}>
             <Link href="/scan">
-              <Button variant="contained" color="primary"
-              size="large"
-              fontSize="large"
-              className={classes.codeBtn}>
-              Can't scan? go to Code
-              </Button>
             </Link>
             </Grid>
              </Grid>
