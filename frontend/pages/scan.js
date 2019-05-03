@@ -25,8 +25,7 @@ class Scan extends Component {
             </Grid>
             <div className="m-4"></div>
           <Grid item xs={12}>
-            <Link href="/scan">
-            </Link>
+          <h1 className="text-center">Welcome, Please scan qrcode to sign in</h1>
             </Grid>
              </Grid>
           </NoSsr>
