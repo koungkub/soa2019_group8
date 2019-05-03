@@ -26,7 +26,7 @@ class TextPrice extends Component {
         parkRate: res.data.parkRate
       })
     })
-   let a= setInterval( () => {
+   setInterval( () => {
       this.setState({
         curTime : new Date(),
         amountHour : this.state.curTime - this.state.startTime < 0 ? 0 : Math.floor(new Date(this.state.curTime - this.state.startTime)/3600000),
@@ -37,7 +37,6 @@ class TextPrice extends Component {
       }catch{
       }
   },1000)
- clearInterval(a)
 }
 }
 componentWillMount(){

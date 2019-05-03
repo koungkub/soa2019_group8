@@ -43,6 +43,7 @@ class TableList extends Component {
   }
   componentDidMount(){
     let listdata = []
+    if(auth.apply() == true){
       axios.get(localStorage.rootapi + 'discount',{
         headers: {
           'Authorization': localStorage.token
@@ -56,11 +57,11 @@ class TableList extends Component {
         })
       })
   }
+}
   render() {
     const { classes } = this.props;
     return (
       <Fragment>
-        <NoSsr>
       <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
@@ -82,7 +83,6 @@ class TableList extends Component {
         </TableHead>
       </Table>
     </Paper>
-    </NoSsr>
           </Fragment>
     );
   }

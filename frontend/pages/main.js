@@ -44,8 +44,7 @@ class Main extends Component {
           </div>
           </div>
           <TableList/>
-          <div className={classes.margin5}>
-          </div>
+          <div className={classes.margin5}/>
           <Grid container>
           <Grid item xs={6}>
           <Payment/>
