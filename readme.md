@@ -10,7 +10,7 @@
 ## How to serve it like a boss
 
 ```bash
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 and migrate database
