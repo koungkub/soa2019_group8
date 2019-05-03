@@ -10,10 +10,6 @@ const styles = theme => ({
   container:{
     maxWidth: '720px',
     margin: 'auto'
-  },
-  codeBtn:{
-    width:"100%",
-    fontSize: '2.9375rem'
   }
 })
 class Scan extends Component {
