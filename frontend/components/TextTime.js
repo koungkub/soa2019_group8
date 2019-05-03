@@ -25,6 +25,7 @@ class TextTime extends Component {
             }
             )
         }
+        
     }
     render(){
         return (

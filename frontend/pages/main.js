@@ -11,6 +11,7 @@ import Payment from '../components/PaymentButton';
 import Discount from '../components/DiscountButton';
 import TableList from '../components/TableList';
 import ParkingTime from '../components/ParkingTime'
+import auth from '../function/authen'
 const styles = theme => ({
     
  textTime:{
@@ -18,11 +19,15 @@ const styles = theme => ({
  },
  margin5:{
     margin :'3rem'
+},
+textPrice:{
+  fontSize: '5rem',
+  textAlign: 'center'
 }
 })
 
 class Main extends Component {
- 
+
   render() {
     const { classes } = this.props;
     return (
@@ -34,7 +39,9 @@ class Main extends Component {
           <Arrival/>
           <div className={classes.margin5}>
           <Divider/>
+          <div className={classes.textPrice}>
           <TextPrice/>
+          </div>
           </div>
           <TableList/>
           <div className={classes.margin5}>

@@ -40,7 +40,6 @@ class SubmitDiscountButton extends Component {
 
   }
   render() {
-    console.log(this.state.code)
     const { classes } = this.props;
     return (
       <Fragment>

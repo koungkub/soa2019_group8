@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {Paper, withStyles, NoSsr} from '@material-ui/core';
+import {Paper, withStyles, NoSsr, Grid} from '@material-ui/core';
 //components
 import Layout from '../components/Layout';
-
+import TextPrice from '../components/TextPrice';
+import SignoutBtn from '../components/SignoutButton'
+import TextDiscount from '../components/TextDiscount'
+import TextTotal from '../components/TextTotalPrice'
 const styles = theme => ({
   centered: {
     position: 'fixed',
@@ -11,9 +14,35 @@ const styles = theme => ({
     left : '50%',
     maxWidth: '720px',
     transform : 'translate(-50%, -50%)'
-        }
+        },
+  pagePadding : {
+    padding: "100px"
+  },
+  amoutColor:{
+    color : 'green'
+  },
+  discountColor:{
+    color : 'red'
+  },
+  totalPrice:{
+    fontSize: '5rem',
+  }
     })
-class Index extends Component {
+class Calculate extends Component {
+  state = {
+    price: 0,
+    discount: 0
+  }
+  handlePrice = (value) =>{
+    this.setState({
+      price : value
+    })
+  }
+  handleDiscount = (value) =>{
+    this.setState({
+      discount : value
+    })
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -21,15 +50,32 @@ class Index extends Component {
         <Layout>
         <NoSsr>
           <div className="centered container">
-          <Paper>
-              <h1>Amount</h1>
+          <Paper className={classes.pagePadding}>
+            <Grid container
+              direction="row"
+              justify="space-between"
+              alignItems="center" 
+              className={classes.amoutColor}>
+              <h1>Amount </h1>
+              <h1><TextPrice onPrice = {this.handlePrice}/></h1>
+              </Grid>
+              <Grid container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+              className={classes.discountColor}>
               <h1>Discount</h1>
+              <h1><TextDiscount onDiscount={this.handleDiscount}/></h1>
+              </Grid>
               <hr></hr>
               <div className="text-center">
-              <h1>Total amount</h1>
-              <h1>50</h1>
+              <h1  className={classes.totalPrice}>Total amount</h1>
+              <h1  className={classes.totalPrice}><TextTotal price ={this.state.price} discount = {this.state.discount}/></h1>
               </div>
           </Paper>
+          </div>
+          <div className="text-center m-5">
+          <SignoutBtn/>
           </div>
           </NoSsr>
           </Layout>
@@ -37,8 +83,8 @@ class Index extends Component {
     );
   }
 }
-Index.propTypes = {
+Calculate.propTypes = {
   classes: PropTypes.object.isRequired,
 };
  
-export default withStyles(styles) (Index);
+export default withStyles(styles) (Calculate);
