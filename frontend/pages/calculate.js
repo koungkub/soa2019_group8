@@ -86,5 +86,4 @@ class Calculate extends Component {
 Calculate.propTypes = {
   classes: PropTypes.object.isRequired,
 };
- 
 export default withStyles(styles) (Calculate);
