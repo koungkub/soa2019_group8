@@ -9,17 +9,24 @@ import TableList from '../components/TablePolicy';
 import InputCode from '../components/InputCode';
 import BackButton from '../components/BackButton';
 import SubmitBtn from '../components/SubmitDiscountButton';
+import AlertError from '../components/AlertError';
 
 const styles = theme => ({
 })
 
 class Discount extends Component { 
    state = {
-      code: ''
+      code: '',
+      error: false
     }
   handleCode = (value) =>{
     this.setState({
       code : value
+    })
+  }
+  handleError = (value) =>{
+    this.setState({
+      error : value
     })
   }
   render() {
@@ -37,7 +44,8 @@ class Discount extends Component {
           <BackButton/>
               </Grid>
               <Grid item xs={6} className="text-center">
-              <SubmitBtn code={this.state.code}/>
+              <SubmitBtn code={this.state.code} error={this.handleError}/>
+              <AlertError error={this.state.error}/>
               </Grid>
               </Grid>          
           </div>
