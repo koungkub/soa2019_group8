@@ -38,7 +38,6 @@ class Camera extends Component {
           delay={this.state.delay}
           onError={this.handleError}
           onScan={this.handleScan}
-          legacyMode={true}
           style={{ width: "100%", height:"100%" }}
         />
 
