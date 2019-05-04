@@ -63,7 +63,7 @@ class Main extends React.Component {
   }
   
   render() {
-    let close = <div className="close" name="closeBtn" onClick={() => {this.props.onCloseArticle()}}><a href='#'>close</a></div>
+    let close = <div className="close" name="closeBtn" onClick={() => {this.props.onCloseArticle()}}><a href='#' name="closeBtn">close</a></div>
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="intro" className={`${this.props.article === 'intro' && this.state.page === 'intro' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
