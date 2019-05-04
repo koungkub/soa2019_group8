@@ -1,12 +1,12 @@
-import {withStyles, TableCell, TableRow} from '@material-ui/core';
-import PropTypes from 'prop-types';
+import {withStyles, TableCell, TableRow} from '@material-ui/core'
+import PropTypes from 'prop-types'
 import {Component} from 'react'
 
 const styles = theme => ({
     bodyText: {
         fontSize: '1.4rem'
     }
-});
+})
 
 
 class TableBodyDiscountCode extends Component {
@@ -17,7 +17,7 @@ class TableBodyDiscountCode extends Component {
         }
     }
     render(){
-        const { classes } = this.props;
+        const { classes } = this.props
         return(
             <TableRow key={this.state.data.id}>
                 <TableCell component="th" scope="row" className={classes.bodyText}>{this.state.data.name}</TableCell>
@@ -30,5 +30,5 @@ class TableBodyDiscountCode extends Component {
 
 TableBodyDiscountCode.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+  }
 export default withStyles(styles) (TableBodyDiscountCode)
