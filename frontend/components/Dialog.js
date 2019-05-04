@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import {Dialog,  withStyles} from '@material-ui/core';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
+import React, { Component } from 'react'
+import Button from '@material-ui/core/Button'
+import {Dialog,  withStyles} from '@material-ui/core'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import Slide from '@material-ui/core/Slide'
 import Router from 'next/router'
 import AlertText from './AlertText'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const styles = theme => ({
   fontBtn:{
@@ -16,12 +16,12 @@ const styles = theme => ({
   }
     })
 function Transition(props) {
-  return <Slide direction="up" {...props} />;
+  return <Slide direction="up" {...props} />
 }
 function initState(DialogPopup){
   return function WrappedComponent(props) {
-    const [close, setClose] = React.useState(false);
-    return <DialogPopup {...props} close={close} setClose={setClose}/>;
+    const [close, setClose] = React.useState(false)
+    return <DialogPopup {...props} close={close} setClose={setClose}/>
   }
 }
 class DialogPopup extends Component{
@@ -51,7 +51,7 @@ class DialogPopup extends Component{
       })
     }
     render(){
-      const { classes } = this.props;
+      const { classes } = this.props
         return (
             <div>
               <Dialog
@@ -80,13 +80,13 @@ class DialogPopup extends Component{
               </Dialog>
               <AlertText onRef={ref => (this.child = ref)}/>
             </div>
-          );
+          )
         }
         
     }
 
-DialogPopup = initState(DialogPopup);
+DialogPopup = initState(DialogPopup)
 DialogPopup.propTypes = {
   classes: PropTypes.object.isRequired,
-};
-export default withStyles(styles) (DialogPopup);
+}
+export default withStyles(styles) (DialogPopup)

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 import Link from 'next/link'
-import PropTypes from 'prop-types';
-import {Button, Grid, withStyles, NoSsr} from '@material-ui/core';
+import PropTypes from 'prop-types'
+import {Button, Grid, withStyles, NoSsr} from '@material-ui/core'
 //components
-import Layout from '../components/Layout';
-import LogoParking from '../components/LogoParking';
+import Layout from '../components/Layout'
+import LogoParking from '../components/LogoParking'
 
 const styles = theme => ({
   centered: {
@@ -22,7 +22,7 @@ const styles = theme => ({
 })
 class Index extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <Layout>
@@ -45,11 +45,11 @@ class Index extends Component {
           </NoSsr>
           </Layout>
           </Fragment>
-    );
+    )
   }
 }
 Index.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (Index);
+export default withStyles(styles) (Index)

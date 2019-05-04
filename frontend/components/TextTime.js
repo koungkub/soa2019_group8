@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component, Fragment } from "react"
 import axios from 'axios'
 //function
 import moment from 'moment'

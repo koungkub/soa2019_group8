@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {Paper, withStyles, NoSsr, Grid} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {Paper, withStyles, NoSsr, Grid} from '@material-ui/core'
 //components
-import Layout from '../components/Layout';
-import TextPrice from '../components/TextPrice';
+import Layout from '../components/Layout'
+import TextPrice from '../components/TextPrice'
 import SignoutBtn from '../components/SignoutButton'
 import TextDiscount from '../components/TextDiscount'
 import TextTotal from '../components/TextTotalPrice'
-import AlertError from '../components/AlertError';
+import AlertError from '../components/AlertError'
 const styles = theme => ({
   centered: {
     position: 'fixed',
@@ -52,7 +52,7 @@ class Calculate extends Component {
   }
   
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <Layout>
@@ -89,10 +89,10 @@ class Calculate extends Component {
           </NoSsr>
           </Layout>
           </Fragment>
-    );
+    )
   }
 }
 Calculate.propTypes = {
   classes: PropTypes.object.isRequired,
-};
-export default withStyles(styles) (Calculate);
+}
+export default withStyles(styles) (Calculate)

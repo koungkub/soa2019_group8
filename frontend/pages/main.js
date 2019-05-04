@@ -1,15 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
-import PropTypes from 'prop-types';
-import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core';
-import authen from '../function/authen'
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core'
 //components
-import Layout from '../components/Layout';
-import Arrival from '../components/BorderText';
-import TextPrice from '../components/TextPrice';
-import Payment from '../components/PaymentButton';
-import Discount from '../components/DiscountButton';
-import TableList from '../components/TableList';
+import Layout from '../components/Layout'
+import Arrival from '../components/BorderText'
+import TextPrice from '../components/TextPrice'
+import Payment from '../components/PaymentButton'
+import Discount from '../components/DiscountButton'
+import TableList from '../components/TableList'
 import ParkingTime from '../components/ParkingTime'
 const styles = theme => ({
     
@@ -28,7 +26,7 @@ textPrice:{
 class Main extends Component {
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
           <NoSsr>
@@ -56,11 +54,11 @@ class Main extends Component {
           </Layout>
           </NoSsr>
           </Fragment>
-    );
+    )
   }
 }
 Main.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (Main);
+export default withStyles(styles) (Main)

@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {withStyles, NoSsr} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {withStyles, NoSsr} from '@material-ui/core'
 import axios from 'axios'
 
 
 import auth from '../function/authen'
 const styles = theme => ({
-});
+})
 
 class TextPrice extends Component {
   constructor(props){
@@ -22,7 +22,7 @@ class TextPrice extends Component {
       let amount = 0
       list.forEach(element => {
           amount += element.amount
-      });
+      })
       return amount
   }
   componentDidMount(){
@@ -61,16 +61,16 @@ class TextPrice extends Component {
 }
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
      {this.state.discount} Bath
           </Fragment>
-    );
+    )
   }
 }
 TextPrice.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (TextPrice);
+export default withStyles(styles) (TextPrice)

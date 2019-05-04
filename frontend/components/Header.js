@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Fragment } from 'react';
+import { Fragment } from 'react'
 export default () => (
   <Fragment>
     <Head>

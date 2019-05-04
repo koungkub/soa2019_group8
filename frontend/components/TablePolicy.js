@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {withStyles,Paper} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {withStyles,Paper} from '@material-ui/core'
 import axios from 'axios'
 import auth from '../function/authen'
 const styles = theme => ({
@@ -12,7 +12,7 @@ const styles = theme => ({
     border: '3px solid ',
     padding: '40px'
   },
-});
+})
 class TablePolicy extends Component {
   state = {
     amountRate: 0,
@@ -35,7 +35,7 @@ class TablePolicy extends Component {
     }
   }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
       <Paper className={classes.root}>
@@ -55,11 +55,11 @@ class TablePolicy extends Component {
 
     </Paper>
           </Fragment>
-    );
+    )
   }
 }
 TablePolicy.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (TablePolicy);
+export default withStyles(styles) (TablePolicy)

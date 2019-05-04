@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {withStyles, TextField} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {withStyles, TextField} from '@material-ui/core'
 
 const styles = theme => ({
     textField: {
@@ -8,7 +8,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: '100%',
       },
-});
+})
 
 class DiscountButton extends Component {
     state = {
@@ -17,11 +17,11 @@ class DiscountButton extends Component {
     handleChange = code => event => {
         this.setState({
           [code]: event.target.value,
-        });
+        })
         this.props.onSelectCode(event.target.value)
-      };
+      }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
            <form className={classes.container} noValidate autoComplete="off">
@@ -36,11 +36,11 @@ class DiscountButton extends Component {
         />
 </form>
           </Fragment>
-    );
+    )
   }
 }
 DiscountButton.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (DiscountButton);
+export default withStyles(styles) (DiscountButton)

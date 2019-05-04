@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
-import PropTypes from 'prop-types';
-import {withStyles, Button, NoSsr} from '@material-ui/core';
-import DialogPopup from './Dialog';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {withStyles, Button, NoSsr} from '@material-ui/core'
+import DialogPopup from './Dialog'
 
 const styles = theme => ({
   paymentBtn:{
@@ -10,12 +9,12 @@ const styles = theme => ({
     background: 'green',
     width: 300
   }
-});
+})
 function initState(PaymentButton){
   return function WrappedComponent(props) {
-    const [close, setClose] = React.useState(false);
+    const [close, setClose] = React.useState(false)
     const [open, setOpen] = React.useState(true)
-    return <PaymentButton {...props} close={close} open={open} setOpen={setOpen} setClose={setClose}/>;
+    return <PaymentButton {...props} close={close} open={open} setOpen={setOpen} setClose={setClose}/>
   }
 }
 class PaymentButton extends Component {
@@ -33,7 +32,7 @@ class PaymentButton extends Component {
     })
   }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       
       <Fragment>
@@ -48,13 +47,13 @@ class PaymentButton extends Component {
         <DialogPopup open={this.state.open} setOpen={this.state.setOpen}/>
     </NoSsr>
           </Fragment>
-    );
+    )
   }
 }
 
-PaymentButton = initState(PaymentButton);
+PaymentButton = initState(PaymentButton)
 PaymentButton.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (PaymentButton);
+export default withStyles(styles) (PaymentButton)

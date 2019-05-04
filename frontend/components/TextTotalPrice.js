@@ -1,8 +1,4 @@
-import { Component, Fragment } from "react";
-import axios from 'axios'
-//function
-import moment from 'moment'
-import auth from '../function/authen'
+import { Component, Fragment } from "react"
 class TextTime extends Component {
     controlPrice(){
         let total = this.state.price - this.state.discount
