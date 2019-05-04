@@ -82,7 +82,7 @@ class Main extends React.Component {
             </div>
             <ul className="actions">
               <li><input name="submitcode" value="Generate" className="special" type="submit"/></li>
-              <li><input type="reset" value="Reset" onClick={this.reset}/></li>
+              <li><input name="reset"type="reset" value="Reset" onClick={this.reset}/></li>
             </ul>
           </form>
           {close}
