@@ -47,7 +47,6 @@ class Main extends React.Component {
     price: 0,
     code:"Please Enter Detail",
     page:this.props.article,
-    status:""
   }
   constructor(props){
     super(props)
