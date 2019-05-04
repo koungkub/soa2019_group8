@@ -10,7 +10,7 @@ class TextPrice extends Component {
     curTime: '',
     startTime: '',
     amountHour: 0,
-    price: 0,
+    price: "Please wait",
     parkRate:0
   }
   componentDidMount(){
@@ -30,7 +30,7 @@ class TextPrice extends Component {
       this.setState({
         curTime : new Date(),
         amountHour : this.state.curTime - this.state.startTime < 0 ? 0 : Math.floor(new Date(this.state.curTime - this.state.startTime)/3600000),
-        price : this.state.amountHour * this.state.parkRate
+        price : this.state.amountHour * this.state.parkRate + " Bath"
       })
       try{
         this.props.onPrice(this.state.price)
@@ -45,7 +45,7 @@ componentWillUnMount(){
   render() {
     return (
       <Fragment>
-      {this.state.price} Bath
+      {this.state.price}
       </Fragment>
     )
   }
