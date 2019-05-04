@@ -17,22 +17,6 @@ class Scan extends Component {
     super(props)
     this.child = React.createRef()
   }
-  handleError = (value) =>{
-    this.setState({
-      error : value
-    })
-  }
-  handleLoad = (value) =>{
-    this.setState({
-      load: value
-    })
-  }
-  loading= () =>{
-    this.child.handleClickInfo()
-  }
-  erroring= () =>{
-    this.child.handleClickError()
-  }
   render() {
     const { classes } = this.props
     return (
@@ -41,13 +25,13 @@ class Scan extends Component {
         <NoSsr>
           <Grid container className={classes.container} >
             <Grid item xs={12}>
-            <Camera errorhandle={this.handleError}></Camera>
+            <Camera></Camera>
             </Grid>
             <div className="m-4"></div>
           <Grid item xs={12}>
           <h1 className="text-center">Welcome, Please scan qrcode to sign in</h1>
           
-          <CameraLegacy errorhandle={this.isError} loadhandle={this.handleLoad} className="text-center"/>
+          <CameraLegacy className="text-center"/>
             </Grid>
              </Grid>
           </NoSsr>
