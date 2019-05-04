@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import {Table , withStyles, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import axios from 'axios'
+import {Table , withStyles, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core'
 
 //component
-import TableDiscount from './TableBodyDiscountCode';
-import TextDiscount from './TextDiscount';
+import TableDiscount from './TableBodyDiscountCode'
+import TextDiscount from './TextDiscount'
 //functiong
-import auth from '../function/authen';
+import auth from '../function/authen'
 const styles = theme => ({
      root: {
     width: '600px',
@@ -21,19 +21,19 @@ const styles = theme => ({
   head: {
     fontSize: '2rem'
   },
-});
+})
 
 
-let id = 0;
+let id = 0
 function createData(name, pay) {
-  id += 1;
-  return { id, name, pay};
+  id += 1
+  return { id, name, pay}
 }
 
 
 class TableList extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       rows: []
     }
@@ -48,7 +48,7 @@ class TableList extends Component {
         ).then(res=>{
           res.data.forEach(data => {
           listdata.push(createData(data.store, data.amount))
-        });
+        })
         this.setState({
           rows : listdata
         })
@@ -56,7 +56,7 @@ class TableList extends Component {
   }
 }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
       <Paper className={classes.root}>
@@ -81,11 +81,11 @@ class TableList extends Component {
       </Table>
     </Paper>
           </Fragment>
-    );
+    )
   }
 }
 TableList.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (TableList);
+export default withStyles(styles) (TableList)
