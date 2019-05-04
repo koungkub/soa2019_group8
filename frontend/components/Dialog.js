@@ -7,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Router from 'next/router'
-
+import AlertText from './AlertText'
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
@@ -39,7 +39,7 @@ class DialogPopup extends Component{
       })
     }
     handleSubmit = () => {
-      
+      this.child.handleClickInfo()
       this.handleClose()
       Router.push('/calculate')
     }
@@ -78,6 +78,7 @@ class DialogPopup extends Component{
                   </Button>
                 </DialogActions>
               </Dialog>
+              <AlertText onRef={ref => (this.child = ref)}/>
             </div>
           );
         }

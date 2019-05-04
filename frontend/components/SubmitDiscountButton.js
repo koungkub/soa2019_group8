@@ -29,6 +29,7 @@ class SubmitDiscountButton extends Component {
   }
   checkDiscountCode = () => {
     let path = (localStorage.rootapi) + ('discount/') + (this.state.code)
+    this.child.handleClickInfo()
     axios.get(path, {
       headers: {
         'Authorization': localStorage.token
@@ -38,7 +39,7 @@ class SubmitDiscountButton extends Component {
       Router.replace('/main')
     }).catch(e =>{
       console.log("fail")
-      this.props.errorhandle(true)
+      this.child.handleClickError()
     })
 
   }
