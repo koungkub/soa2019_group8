@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import Router from 'next/router'
 import auth from '../function/authen'
+import AlertText from '../components/AlertText'
 class Camera extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +19,14 @@ class Camera extends Component {
   }
   handleScan(data) {
     if (data) {
+      this.child.handleClickInfo()
       axios.get(data).then(res =>{
-        console.log(data)
         localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "https://" + data.split('/')[2] + '/')
         Router.replace('/main')
         console.log(data.split("/"))
+      }).catch(()=>{
+        this.child.handleClickError()
       })
     }
   }
@@ -41,7 +44,7 @@ class Camera extends Component {
           onScan={this.handleScan}
           style={{ width: "100%", height:"100%" }}
         />
-
+  <AlertText onRef={ref => (this.child = ref)}/>
         </NoSSR>
       </Fragment>
     );
