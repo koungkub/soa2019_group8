@@ -14,7 +14,7 @@ class LogoParking extends Component {
         }
         return(
                 <Fragment>
-                <Image src="../static/logo.png" style={logo}/>
+                <Image name="logo" src="../static/logo.png" style={logo}/>
                 </Fragment>
         )
     }

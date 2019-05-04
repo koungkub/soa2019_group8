@@ -62,7 +62,9 @@ class Camera extends Component {
             onScan={this.handleScan}
             style={{ width: "0%", height:"0%" }}
         />
-        <Button variant="contained" 
+        <Button
+        name="cameralegacy"
+         variant="contained" 
               size="large"
               fontSize="large"
               color="secondary"

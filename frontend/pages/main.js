@@ -36,7 +36,7 @@ class Main extends Component {
           <Arrival/>
           <div className={classes.margin5}>
           <Divider/>
-          <div className={classes.textPrice}>
+          <div name="startTimeText" className={classes.textPrice}>
           <TextPrice/>
           </div>
           </div>

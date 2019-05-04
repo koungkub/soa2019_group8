@@ -19,7 +19,7 @@ class TableBodyDiscountCode extends Component {
     render(){
         const { classes } = this.props
         return(
-            <TableRow key={this.state.data.id}>
+            <TableRow  name="listDiscount" key={this.state.data.id}>
                 <TableCell component="th" scope="row" className={classes.bodyText}>{this.state.data.name}</TableCell>
                 <TableCell align="right" className={classes.bodyText}>{this.state.data.pay}</TableCell>
              </TableRow>

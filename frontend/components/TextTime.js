@@ -29,7 +29,7 @@ class TextTime extends Component {
     }
     render(){
         return (
-            <Fragment>
+            <Fragment >
             {this.state.startTime}
             </Fragment>
         )

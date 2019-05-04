@@ -35,6 +35,7 @@ class Camera extends Component {
       <Fragment>
         <NoSSR>
         <QrReader
+          name="camerascan"
           delay={this.state.delay}
           onError={this.handleError}
           onScan={this.handleScan}
