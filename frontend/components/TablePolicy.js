@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {withStyles,Paper} from '@material-ui/core';
-
+import axios from 'axios'
+import auth from '../function/authen'
 const styles = theme => ({
      root: {
     width: '700px',
@@ -19,7 +20,19 @@ class TablePolicy extends Component {
     parkRate:0
   }
   componentDidMount(){
-
+    if(auth.apply() == true){
+      axios.get(localStorage.rootapi + 'parking', {
+        headers:{
+          'Authorization': localStorage.token
+        }
+      }).then(res=>{
+        this.setState({
+          amountRate: res.data.amountRate,
+          parkRate: res.data.parkRate,
+          discountRate: res.data.discountRate
+        })
+      })
+    }
   }
   render() {
     const { classes } = this.props;
@@ -34,7 +47,7 @@ class TablePolicy extends Component {
           <li>เศษของชั่วโมงเกิน 30 นาที คิดเป็น 1 ชั่วโมง</li>
         </ul>
       </li>
-      <li>ซื้อสินค้าและ/หรือบริการต่อวันรวม {this.state.amountRate}บาท สามารถลดค่าจอดรถได้ {this.state.discountRate}</li>
+      <li>ซื้อสินค้าและ/หรือบริการต่อวันรวม {this.state.amountRate}บาท สามารถลดค่าจอดรถได้ {this.state.discountRate}บาท</li>
       <li>ท่านจะได้รับรหัสส่วนลดจากใบเสร็จชำระเงินจากร้านค้าต่างๆภายในสถานที่ที่ท่านจอดรถเท่านั้น </li>
       <li>** หากท่านลูกค้าจอดรถค้างคืนอาจจะถูกปรับเพิ่ม (บางสาขา)</li>
       <li>ทางทีมงานขอสงวนสิทธิ์เปลี่ยนแปลงเงื่อนไขได้โดยไม่ต้องให้ทราบล่วงหน้า</li>
