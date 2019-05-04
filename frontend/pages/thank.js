@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
-import PropTypes from 'prop-types';
-import {Button, Grid, withStyles, NoSsr} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {Grid, withStyles, NoSsr} from '@material-ui/core'
 //components
-import Layout from '../components/Layout';
-import LogoParking from '../components/LogoParking';
+import Layout from '../components/Layout'
+import LogoParking from '../components/LogoParking'
 
 const styles = theme => ({
   centered: {
@@ -22,7 +21,7 @@ const styles = theme => ({
 })
 class Thank extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <Layout>
@@ -38,11 +37,11 @@ class Thank extends Component {
           </NoSsr>
           </Layout>
           </Fragment>
-    );
+    )
   }
 }
 Thank.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (Thank);
+export default withStyles(styles) (Thank)
