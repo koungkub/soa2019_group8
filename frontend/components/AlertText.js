@@ -10,10 +10,10 @@ class AlearText extends React.Component {
         this.props.onRef(undefined)
     }
   handleClickInfo () {
-    this.props.enqueueSnackbar('Please wait . . .', {variant: 'info'})
+    this.props.enqueueSnackbar('Please wait . . .', {variant: 'info', name="alertTextInfo"})
   }
   handleClickError () {
-    this.props.enqueueSnackbar('Something error. please try again', {variant: 'error'})
+    this.props.enqueueSnackbar('Something error. please try again', {variant: 'error', name="alertTextError"})
   }
   render() {
     return (
