@@ -14,6 +14,11 @@ const styles = theme => ({
   },
 });
 class TablePolicy extends Component {
+  state = {
+    amountRate: 0,
+    discountRate: 0,
+    parkRate:0
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -21,8 +26,13 @@ class TablePolicy extends Component {
       <Paper className={classes.root}>
      <h1>Policy</h1>
      <ol>
-      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry</li>
-      <li>orem Ipsum has been the industry's standard dummy text ever since the 1500s</li>
+      <li>อัตราค่าบริการจอดรถ
+        <ul>
+          <li>คิดค่าบริการชั่วโมงละ {this.state.parkRate} บาท</li>
+          <li>เศษของชั่วโมงเกิน 30 นาที คิดเป็น 1 ชั่วโมง</li>
+        </ul>
+      </li>
+      <li>ซื้อสินค้าและ/หรือบริการต่อวันรวม {this.state.amountRate}บาท สามารถลดค่าจอดรถได้ {this.state.discountRate}</li>
       <li> Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
       <li>it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College</li>
      </ol> 

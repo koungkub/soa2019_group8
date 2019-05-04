@@ -11,7 +11,6 @@ import Payment from '../components/PaymentButton';
 import Discount from '../components/DiscountButton';
 import TableList from '../components/TableList';
 import ParkingTime from '../components/ParkingTime'
-import auth from '../function/authen'
 const styles = theme => ({
     
  textTime:{

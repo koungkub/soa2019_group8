@@ -6,12 +6,11 @@ import {withStyles, Button, colors} from '@material-ui/core';
 import React, { Component, Fragment } from 'react';
 import Router from 'next/router'
 import auth from '../function/authen'
-
 const styles = theme => ({
     CantScanBtn:{
       fontSize: '2.9375rem',
       background: colors.red[900],
-      width: '100%'
+      width: '100%',
     }
   });
 class Camera extends Component {
@@ -19,7 +18,8 @@ class Camera extends Component {
     super(props);
     this.state = {
       delay: 300,
-      result:''
+      result:'',
+      loading:false
     };
     this.handleScan = this.handleScan.bind(this);
     this.onImageLoad = this.onImageLoad.bind(this);
@@ -35,15 +35,22 @@ class Camera extends Component {
         localStorage.setItem('rootapi', "https://" + data.split('/')[2] + '/')
         Router.replace('/main')
         console.log(data.split("/"))
+      }).catch(()=>{
+        this.props.errorhandle(true)
       })
     }
+    
   }
   onImageLoad(){
+    this.setState({
+        loading:true
+    })
     this.refs.qrReader.openImageDialog()
   } 
   handleError(err) {
     console.error(err);
   }
+
   render() {
     const { classes } = this.props;
     return (
@@ -63,7 +70,7 @@ class Camera extends Component {
               color="secondary"
               onClick={this.onImageLoad}
               className={classes.CantScanBtn}>
-              Can't scan, Click
+              Can't scan ? click
         </Button>
         </NoSSR>
       </Fragment>
