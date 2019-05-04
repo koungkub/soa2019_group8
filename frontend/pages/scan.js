@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {Grid, withStyles, NoSsr} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {Grid, withStyles, NoSsr} from '@material-ui/core'
 //components
-import Layout from '../components/Layout';
-import Camera from '../components/Camera';
-import CameraLegacy from '../components/CameraLegacy';
+import Layout from '../components/Layout'
+import Camera from '../components/Camera'
+import CameraLegacy from '../components/CameraLegacy'
 const styles = theme => ({
   container:{
     maxWidth: '720px',
@@ -14,8 +14,8 @@ const styles = theme => ({
 
 class Scan extends Component {
   constructor(props) {
-    super(props);
-    this.child = React.createRef();
+    super(props)
+    this.child = React.createRef()
   }
   handleError = (value) =>{
     this.setState({
@@ -34,7 +34,7 @@ class Scan extends Component {
     this.child.handleClickError()
   }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <Layout/>
@@ -52,11 +52,11 @@ class Scan extends Component {
              </Grid>
           </NoSsr>
         </Fragment>
-    );
+    )
   }
 }
 Scan.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (Scan);
+export default withStyles(styles) (Scan)
