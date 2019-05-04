@@ -1,15 +1,14 @@
-import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
-import PropTypes, { func } from 'prop-types';
-import {withStyles, NoSsr, Divider, Button, Grid} from '@material-ui/core';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {withStyles, NoSsr, Grid} from '@material-ui/core'
 
 //components
-import Layout from '../components/Layout';
-import TableList from '../components/TablePolicy';
-import InputCode from '../components/InputCode';
-import BackButton from '../components/BackButton';
-import SubmitBtn from '../components/SubmitDiscountButton';
-import AlertError from '../components/AlertError';
+import Layout from '../components/Layout'
+import TableList from '../components/TablePolicy'
+import InputCode from '../components/InputCode'
+import BackButton from '../components/BackButton'
+import SubmitBtn from '../components/SubmitDiscountButton'
+import AlertError from '../components/AlertError'
 
 const styles = theme => ({
 })
@@ -30,7 +29,7 @@ class Discount extends Component {
     })
   }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <Layout>
@@ -52,11 +51,11 @@ class Discount extends Component {
           </NoSsr>
           </Layout>
           </Fragment>
-    );
+    )
   }
 }
 Discount.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (Discount);
+export default withStyles(styles) (Discount)
