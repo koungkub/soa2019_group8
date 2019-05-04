@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import {withStyles, Button, NoSsr} from '@material-ui/core'
 import axios from 'axios'
-import AlertText from '../components/AlertText'
+import AlertText from './AlertText'
 
 const styles = theme => ({
   greenBtn:{
