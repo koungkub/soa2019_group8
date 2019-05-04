@@ -1,5 +1,5 @@
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { Component, Fragment } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { Component, Fragment } from 'react'
 
 class Loading extends Component {
 
@@ -12,4 +12,4 @@ class Loading extends Component {
     }
 }
   
-export default  (Loading);
+export default  (Loading)
