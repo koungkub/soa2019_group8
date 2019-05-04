@@ -5,7 +5,9 @@ function checklogin(){
     const token = localStorage.token
     if (typeof(token) == "undefined") {
         if(location.pathname != '/scan'){
-          Router.push("/scan")
+          if(location.pathname != '/scanlegacy'){
+            Router.push("/scan")
+          }
         }
         return false
       }
@@ -15,8 +17,10 @@ function checklogin(){
   }catch(e){
     console.log(e)
     if(location.pathname != '/scan'){
-      Router.push("/scan")
-     }
+      if(location.pathname != '/scanlegacy'){
+        Router.push("/scan")
+      }
+    }
      return false
   }
 }

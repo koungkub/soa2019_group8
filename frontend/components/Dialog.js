@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
+import {Dialog,  withStyles} from '@material-ui/core';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Router from 'next/router'
+import AlertText from './AlertText'
+import PropTypes from 'prop-types';
+
+const styles = theme => ({
+  fontBtn:{
+    fontSize: 20
+  }
+    })
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
@@ -31,7 +39,7 @@ class DialogPopup extends Component{
       })
     }
     handleSubmit = () => {
-      
+      this.child.handleClickInfo()
       this.handleClose()
       Router.push('/calculate')
     }
@@ -43,6 +51,7 @@ class DialogPopup extends Component{
       })
     }
     render(){
+      const { classes } = this.props;
         return (
             <div>
               <Dialog
@@ -61,18 +70,23 @@ class DialogPopup extends Component{
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <Button size="large" onClick={this.handleClose} color="default">
+                  <Button className={classes.fontBtn} size="large" onClick={this.handleClose} color="default">
                     Cancel
                   </Button>
-                  <Button size="large" onClick={this.handleSubmit} color="primary">
-                    Submit
+                  <Button className={classes.fontBtn} size="large" onClick={this.handleSubmit} color="secondary">
+                    Confirm
                   </Button>
                 </DialogActions>
               </Dialog>
+              <AlertText onRef={ref => (this.child = ref)}/>
             </div>
           );
         }
         
     }
+
 DialogPopup = initState(DialogPopup);
-export default DialogPopup;
+DialogPopup.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+export default withStyles(styles) (DialogPopup);

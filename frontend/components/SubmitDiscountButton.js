@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import Router from 'next/router'
-import {withStyles, Button, NoSsr} from '@material-ui/core';
+import {withStyles, Button, NoSsr} from '@material-ui/core'
 import axios from 'axios'
+import AlertText from './AlertText'
 
 const styles = theme => ({
   greenBtn:{
@@ -28,6 +29,7 @@ class SubmitDiscountButton extends Component {
   }
   checkDiscountCode = () => {
     let path = (localStorage.rootapi) + ('discount/') + (this.state.code)
+    this.child.handleClickInfo()
     axios.get(path, {
       headers: {
         'Authorization': localStorage.token
@@ -37,7 +39,7 @@ class SubmitDiscountButton extends Component {
       Router.replace('/main')
     }).catch(e =>{
       console.log("fail")
-      this.props.errorhandle(true)
+      this.child.handleClickError()
     })
 
   }
@@ -54,6 +56,7 @@ class SubmitDiscountButton extends Component {
               >
                     Submit
               </Button>
+              <AlertText onRef={ref => (this.child = ref)}/>
     </NoSsr>
           </Fragment>
     );

@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper} from '@material-ui/core';
-import TextTimeStart from './TextTime';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper} from '@material-ui/core'
+import TextTimeStart from './TextTime'
 const styles = theme => ({
   root: {
     width: '500px',
@@ -15,11 +15,11 @@ const styles = theme => ({
   head: {
     fontSize: '3rem'
   },
-});
+})
 
 class BorderText extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <NoSsr>
@@ -35,11 +35,11 @@ class BorderText extends Component {
     </Paper>
     </NoSsr>
           </Fragment>
-    );
+    )
   }
 }
 BorderText.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (BorderText);
+export default withStyles(styles) (BorderText)

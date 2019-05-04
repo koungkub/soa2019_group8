@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
 import PropTypes from 'prop-types';
-import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
-
+import {withStyles,Paper} from '@material-ui/core';
+import axios from 'axios'
+import auth from '../function/authen'
 const styles = theme => ({
      root: {
     width: '700px',
@@ -14,6 +14,26 @@ const styles = theme => ({
   },
 });
 class TablePolicy extends Component {
+  state = {
+    amountRate: 0,
+    discountRate: 0,
+    parkRate:0
+  }
+  componentDidMount(){
+    if(auth.apply() == true){
+      axios.get(localStorage.rootapi + 'parking', {
+        headers:{
+          'Authorization': localStorage.token
+        }
+      }).then(res=>{
+        this.setState({
+          amountRate: res.data.amountRate,
+          parkRate: res.data.parkRate,
+          discountRate: res.data.discountRate
+        })
+      })
+    }
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -21,10 +41,16 @@ class TablePolicy extends Component {
       <Paper className={classes.root}>
      <h1>Policy</h1>
      <ol>
-      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry</li>
-      <li>orem Ipsum has been the industry's standard dummy text ever since the 1500s</li>
-      <li> Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-      <li>it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College</li>
+      <li>อัตราค่าบริการจอดรถ
+        <ul>
+          <li>คิดค่าบริการชั่วโมงละ {this.state.parkRate} บาท</li>
+          <li>เศษของชั่วโมงเกิน 30 นาที คิดเป็น 1 ชั่วโมง</li>
+        </ul>
+      </li>
+      <li>ซื้อสินค้าและ/หรือบริการต่อวันรวม {this.state.amountRate}บาท สามารถลดค่าจอดรถได้ {this.state.discountRate}บาท</li>
+      <li>ท่านจะได้รับรหัสส่วนลดจากใบเสร็จชำระเงินจากร้านค้าต่างๆภายในสถานที่ที่ท่านจอดรถเท่านั้น </li>
+      <li>** หากท่านลูกค้าจอดรถค้างคืนอาจจะถูกปรับเพิ่ม (บางสาขา)</li>
+      <li>ทางทีมงานขอสงวนสิทธิ์เปลี่ยนแปลงเงื่อนไขได้โดยไม่ต้องให้ทราบล่วงหน้า</li>
      </ol> 
 
     </Paper>
