@@ -14,7 +14,7 @@ class TextPrice extends Component {
     this.state = {
      discountRate: 0,
      amountRate: 0,
-     discount:0,
+     discount:"Please wait",
      amount: 0
     }
   }
@@ -49,7 +49,7 @@ class TextPrice extends Component {
 
       setInterval( () => {
         this.setState({
-          discount:   Math.floor(this.state.amount/this.state.amountRate) * this.state.discountRate
+          discount:   Math.floor(this.state.amount/this.state.amountRate) * this.state.discountRate + " Bath"
         })
         try{
           this.props.onDiscount(this.state.discount)
@@ -64,7 +64,7 @@ class TextPrice extends Component {
     const { classes } = this.props
     return (
       <Fragment>
-     {this.state.discount} Bath
+     {this.state.discount}
           </Fragment>
     )
   }

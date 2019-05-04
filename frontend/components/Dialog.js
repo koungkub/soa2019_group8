@@ -70,10 +70,10 @@ class DialogPopup extends Component{
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <Button className={classes.fontBtn} size="large" onClick={this.handleClose} color="default">
+                  <Button name="cancelDialogBtn" className={classes.fontBtn} size="large" onClick={this.handleClose} color="default">
                     Cancel
                   </Button>
-                  <Button className={classes.fontBtn} size="large" onClick={this.handleSubmit} color="secondary">
+                  <Button name="confirmDialogBtn" className={classes.fontBtn} size="large" onClick={this.handleSubmit} color="secondary">
                     Confirm
                   </Button>
                 </DialogActions>

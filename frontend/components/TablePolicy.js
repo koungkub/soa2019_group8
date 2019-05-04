@@ -44,7 +44,7 @@ class TablePolicy extends Component {
       <li>อัตราค่าบริการจอดรถ
         <ul>
           <li>คิดค่าบริการชั่วโมงละ {this.state.parkRate} บาท</li>
-          <li>เศษของชั่วโมงเกิน 30 นาที คิดเป็น 1 ชั่วโมง</li>
+          <li>เศษของชั่วโมงที่ไม่เกิน 60 นาที (ตั้งแต่ 1-59) จะไม่ถูกนับเป็นชั่วโมง</li>
         </ul>
       </li>
       <li>ซื้อสินค้าและ/หรือบริการต่อวันรวม {this.state.amountRate}บาท สามารถลดค่าจอดรถได้ {this.state.discountRate}บาท</li>

@@ -7,7 +7,6 @@ import TextPrice from '../components/TextPrice'
 import SignoutBtn from '../components/SignoutButton'
 import TextDiscount from '../components/TextDiscount'
 import TextTotal from '../components/TextTotalPrice'
-import AlertError from '../components/AlertError'
 const styles = theme => ({
   centered: {
     position: 'fixed',
@@ -65,7 +64,7 @@ class Calculate extends Component {
               alignItems="center" 
               className={classes.amoutColor}>
               <h1>Amount </h1>
-              <h1><TextPrice onPrice = {this.handlePrice}/></h1>
+              <h1 name="parkingTimeText"><TextPrice onPrice = {this.handlePrice}/></h1>
               </Grid>
               <Grid container
               direction="row"
@@ -73,18 +72,17 @@ class Calculate extends Component {
               alignItems="center"
               className={classes.discountColor}>
               <h1>Discount</h1>
-              <h1><TextDiscount onDiscount={this.handleDiscount}/></h1>
+              <h1 name="discountAmount"><TextDiscount onDiscount={this.handleDiscount}/></h1>
               </Grid>
               <hr></hr>
               <div className="text-center">
-              <h1  className={classes.totalPrice}>Total amount</h1>
-              <h1  className={classes.totalPrice}><TextTotal price ={this.state.price} discount = {this.state.discount}/></h1>
+              <h1 className={classes.totalPrice}>Total amount</h1>
+              <h1 name="totalPrice" className={classes.totalPrice}><TextTotal price ={this.state.price} discount = {this.state.discount}/></h1>
               </div>
           </Paper>
           </div>
           <div className="text-center m-5">
           <SignoutBtn errorvar={this.handleError}/>
-          <AlertError error={this.state.error}/>
           </div>
           </NoSsr>
           </Layout>

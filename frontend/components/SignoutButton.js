@@ -34,7 +34,9 @@ class SignoutButton extends Component {
     return (
       <Fragment>
         <NoSsr>
-        <Button variant="contained"
+        <Button
+        name="signoutBtn"
+         variant="contained"
               size="large"
               fontSize="large"
               color="secondary"

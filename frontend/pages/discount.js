@@ -8,9 +8,11 @@ import TableList from '../components/TablePolicy'
 import InputCode from '../components/InputCode'
 import BackButton from '../components/BackButton'
 import SubmitBtn from '../components/SubmitDiscountButton'
-import AlertError from '../components/AlertError'
 
 const styles = theme => ({
+  margin5:{
+    margin :'3rem'
+}
 })
 
 class Discount extends Component { 
@@ -38,13 +40,13 @@ class Discount extends Component {
           <TableList/>
           <h1>DISCOUNT</h1>
           <InputCode onSelectCode = {this.handleCode}/>
+          <div className={classes.margin5}/>
           <Grid container>
           <Grid item xs={6} className="text-center">
           <BackButton/>
               </Grid>
               <Grid item xs={6} className="text-center">
               <SubmitBtn code={this.state.code} errorhandle={this.handleError}/>
-              <AlertError error={this.state.error}/>
               </Grid>
               </Grid>          
           </div>

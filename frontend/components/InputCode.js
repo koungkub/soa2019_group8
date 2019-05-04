@@ -26,6 +26,7 @@ class DiscountButton extends Component {
       <Fragment>
            <form className={classes.container} noValidate autoComplete="off">
         <TextField
+          name="codeTextInput"
           id="outlined-code"
           label="Please enter your code."
           className={classes.textField}

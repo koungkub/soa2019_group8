@@ -1,5 +1,5 @@
 // import NoSSR from 'react-no-ssr'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 //function
 import auth from '../function/authen'
@@ -52,9 +52,9 @@ class ParkingTime extends Component {
   }
   render() {
     return (
-      <div>
+      <Fragment>
         {typeof(this.state.parking) == true || this.state.parking.toLocaleString()}
-      </div>
+        </Fragment>
     )
   }
 }

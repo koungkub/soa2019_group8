@@ -75,7 +75,7 @@ class TableList extends Component {
         <TableHead>
           <TableRow >
             <TableCell className={classes.head}>DISCOUNT</TableCell>
-            <TableCell align="right" className={classes.head}><TextDiscount/></TableCell>
+            <TableCell align="right" className={classes.head}  name="discountAmount"><TextDiscount/></TableCell>
           </TableRow>
         </TableHead>
       </Table>

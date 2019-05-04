@@ -33,7 +33,7 @@ class Index extends Component {
             </Grid>
           <Grid item xs={12}>
             <Link href="/scan">
-              <Button variant="outlined" color="default"
+              <Button name="goInside" variant="outlined" color="default"
               size="large"
               fontSize="large"
               className={classes.startBtn}>

@@ -37,7 +37,7 @@ class PaymentButton extends Component {
       
       <Fragment>
         <NoSsr>
-        <Button variant="contained"
+        <Button name="paymentBtn" variant="contained"
               size="large"
               fontSize="large"
               className={classes.paymentBtn}

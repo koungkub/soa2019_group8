@@ -32,11 +32,11 @@ class Main extends Component {
           <NoSsr>
         <Layout>
             <div className="container text-center">
-          <h1 className={ classes.textTime }><ParkingTime/></h1>
+          <h1 name="parkingTimeText" className={ classes.textTime }><ParkingTime/></h1>
           <Arrival/>
           <div className={classes.margin5}>
           <Divider/>
-          <div className={classes.textPrice}>
+          <div name="startTimeText" className={classes.textPrice}>
           <TextPrice/>
           </div>
           </div>

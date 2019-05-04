@@ -32,7 +32,6 @@ class Camera extends Component {
     if (data) {
       this.child.handleClickInfo()
       axios.get(data).then(res =>{
-        this.props.loadhandle(true)
         localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "https://" + data.split('/')[2] + '/')
         Router.replace('/main')
@@ -62,7 +61,9 @@ class Camera extends Component {
             onScan={this.handleScan}
             style={{ width: "0%", height:"0%" }}
         />
-        <Button variant="contained" 
+        <Button
+        name="cameralegacy"
+         variant="contained" 
               size="large"
               fontSize="large"
               color="secondary"

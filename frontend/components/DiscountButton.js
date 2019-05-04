@@ -18,7 +18,7 @@ class DiscountButton extends Component {
       <Fragment>
         <NoSsr>
         <Link href="/discount">
-        <Button variant="contained" 
+        <Button name="discountBtn" variant="contained" 
               size="large"
               fontSize="large"
               className={classes.DiscountBtn}>

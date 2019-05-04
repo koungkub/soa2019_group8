@@ -28,7 +28,7 @@ class BorderText extends Component {
         <TableHead>
           <TableRow >
             <TableCell className={classes.head}>ARRIVAL</TableCell>
-            <TableCell align="right" className={classes.head}><TextTimeStart/></TableCell>
+            <TableCell name="startTimeText" align="right" className={classes.head}><TextTimeStart/></TableCell>
           </TableRow>
         </TableHead>
       </Table>
