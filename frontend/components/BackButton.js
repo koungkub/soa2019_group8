@@ -22,7 +22,7 @@ class BackButton extends Component {
     return (
       <Fragment>
         <NoSsr>
-        <Button variant="contained" color="default"
+        <Button name="backBtn" variant="contained" color="default"
               size="large"
               fontSize="large"
               className={classes.paymentBtn}
