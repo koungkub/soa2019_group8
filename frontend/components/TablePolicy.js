@@ -12,6 +12,9 @@ const styles = theme => ({
     border: '3px solid ',
     padding: '40px'
   },
+  font:{
+    fontSize: '2.1rem'
+  }
 })
 class TablePolicy extends Component {
   state = {
@@ -40,9 +43,9 @@ class TablePolicy extends Component {
       <Fragment>
       <Paper className={classes.root}>
      <h1>Policy</h1>
-     <ol>
+     <ol className={classes.font}>
       <li>อัตราค่าบริการจอดรถ
-        <ul>
+        <ul >
           <li>คิดค่าบริการชั่วโมงละ {this.state.parkRate} บาท</li>
           <li>เศษของชั่วโมงที่ไม่เกิน 60 นาที (ตั้งแต่ 1-59) จะไม่ถูกนับเป็นชั่วโมง</li>
         </ul>

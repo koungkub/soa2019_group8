@@ -30,7 +30,7 @@ class TextPrice extends Component {
       this.setState({
         curTime : new Date(),
         amountHour : this.state.curTime - this.state.startTime < 0 ? 0 : Math.floor(new Date(this.state.curTime - this.state.startTime)/3600000),
-        price : this.state.amountHour * this.state.parkRate + " Bath"
+        price : this.state.amountHour * this.state.parkRate + " Baht"
       })
       try{
         this.props.onPrice(this.state.price)
