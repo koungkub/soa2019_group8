@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Grid, withStyles, NoSsr} from '@material-ui/core';
 //components
 import Layout from '../components/Layout';
-import Camera from '../components/Camera';
-import CameraLegacy from '../components/CameraLegacy';
+import Camera from '../components/CameraLegacy';
+import CantScanBtn from '../components/CantScanButton'
 const styles = theme => ({
   container:{
     maxWidth: '720px',
@@ -26,7 +26,7 @@ class Scan extends Component {
           <Grid item xs={12}>
           <h1 className="text-center">Welcome, Please scan qrcode to sign in</h1>
           
-          <CameraLegacy className="text-center"/>
+          <CantScanBtn className="text-center"/>
             </Grid>
              </Grid>
           </NoSsr>
