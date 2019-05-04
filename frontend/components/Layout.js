@@ -1,5 +1,5 @@
 import Header from './Header.js'
-import { Component } from 'react';
+import { Component } from 'react'
 class Layout extends Component{
     constructor(props){
         super(props)
@@ -14,7 +14,7 @@ class Layout extends Component{
       <Header />
       {this.props.children}
         </div>
-        );
+        )
     }
 }
 export default Layout
