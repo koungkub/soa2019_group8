@@ -1,7 +1,8 @@
 if (typeof window != 'undefined') {var QrReader = require('react-qr-reader')}
 import NoSSR from 'react-no-ssr';
 import axios from 'axios';
-import {withStyles, Button, NoSsr, colors} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import {withStyles, Button, colors} from '@material-ui/core';
 import React, { Component, Fragment } from 'react';
 import Router from 'next/router'
 import auth from '../function/authen'
@@ -60,6 +61,7 @@ class Camera extends Component {
               size="large"
               fontSize="large"
               color="secondary"
+              onClick={this.onImageLoad}
               className={classes.CantScanBtn}>
               Can't scan, Click
         </Button>
@@ -68,7 +70,7 @@ class Camera extends Component {
     );
   }
 }
-CantScanButton.propTypes = {
+Camera.propTypes = {
     classes: PropTypes.object.isRequired,
   };
  
