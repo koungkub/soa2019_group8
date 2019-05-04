@@ -1,9 +1,9 @@
 import Image from 'react-bootstrap/Image'
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 
 class LogoParking extends Component {
     constructor(props){
-        super(props);
+        super(props)
     }
     componentDidMount(){
 
@@ -19,4 +19,4 @@ class LogoParking extends Component {
         )
     }
 }
-export default LogoParking;
+export default LogoParking
