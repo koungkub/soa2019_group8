@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 
 
@@ -47,7 +47,7 @@ componentWillUnMount(){
       <Fragment>
       {this.state.price} Bath
       </Fragment>
-    );
+    )
   }
 }
-export default TextPrice;
+export default TextPrice
