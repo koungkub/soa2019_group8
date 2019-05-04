@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link'
 import PropTypes from 'prop-types';
-import {Table , withStyles, NoSsr, TableCell, TableHead, TableRow, Paper, TableBody} from '@material-ui/core';
+import {withStyles,Paper} from '@material-ui/core';
 
 const styles = theme => ({
      root: {
@@ -19,6 +18,9 @@ class TablePolicy extends Component {
     discountRate: 0,
     parkRate:0
   }
+  componentDidMount(){
+
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -33,8 +35,9 @@ class TablePolicy extends Component {
         </ul>
       </li>
       <li>ซื้อสินค้าและ/หรือบริการต่อวันรวม {this.state.amountRate}บาท สามารถลดค่าจอดรถได้ {this.state.discountRate}</li>
-      <li> Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-      <li>it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College</li>
+      <li>ท่านจะได้รับรหัสส่วนลดจากใบเสร็จชำระเงินจากร้านค้าต่างๆภายในสถานที่ที่ท่านจอดรถเท่านั้น </li>
+      <li>** หากท่านลูกค้าจอดรถค้างคืนอาจจะถูกปรับเพิ่ม (บางสาขา)</li>
+      <li>ทางทีมงานขอสงวนสิทธิ์เปลี่ยนแปลงเงื่อนไขได้โดยไม่ต้องให้ทราบล่วงหน้า</li>
      </ol> 
 
     </Paper>
