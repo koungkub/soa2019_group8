@@ -1,12 +1,12 @@
 if (typeof window != 'undefined') {var QrReader = require('react-qr-reader')}
-import NoSSR from 'react-no-ssr';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import {withStyles, Button, colors} from '@material-ui/core';
-import React, { Component, Fragment } from 'react';
+import NoSSR from 'react-no-ssr'
+import axios from 'axios'
+import PropTypes from 'prop-types'
+import {withStyles, Button, colors} from '@material-ui/core'
+import React, { Component, Fragment } from 'react'
 import Router from 'next/router'
 import auth from '../function/authen'
-import AlertText from '../components/AlertText';
+import AlertText from '../components/AlertText'
 const styles = theme => ({
     CantScanBtn:{
       fontSize: '2.9375rem',
