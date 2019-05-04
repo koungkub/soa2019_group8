@@ -32,7 +32,7 @@ class Thank extends Component {
             <LogoParking></LogoParking>
             </Grid>
           <Grid item xs={12}>
-              THANK YOU !! 
+              <h1 className="text-center">THANK YOU !! </h1>
             </Grid>
              </Grid>
           </NoSsr>

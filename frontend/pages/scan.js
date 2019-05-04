@@ -4,7 +4,6 @@ import {Grid, withStyles, NoSsr} from '@material-ui/core';
 //components
 import Layout from '../components/Layout';
 import Camera from '../components/Camera';
-import AlertError from '../components/AlertError'
 import CameraLegacy from '../components/CameraLegacy';
 const styles = theme => ({
   container:{
@@ -14,13 +13,25 @@ const styles = theme => ({
 })
 
 class Scan extends Component {
-  state={
-    error:false
+  constructor(props) {
+    super(props);
+    this.child = React.createRef();
   }
   handleError = (value) =>{
     this.setState({
       error : value
     })
+  }
+  handleLoad = (value) =>{
+    this.setState({
+      load: value
+    })
+  }
+  loading= () =>{
+    this.child.handleClickInfo()
+  }
+  erroring= () =>{
+    this.child.handleClickError()
   }
   render() {
     const { classes } = this.props;
@@ -36,8 +47,7 @@ class Scan extends Component {
           <Grid item xs={12}>
           <h1 className="text-center">Welcome, Please scan qrcode to sign in</h1>
           
-          <CameraLegacy errorhandle={this.handleError} className="text-center"/>
-          <AlertError error={this.state.error}/>
+          <CameraLegacy errorhandle={this.isError} loadhandle={this.handleLoad} className="text-center"/>
             </Grid>
              </Grid>
           </NoSsr>

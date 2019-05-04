@@ -6,6 +6,7 @@ import {withStyles, Button, colors} from '@material-ui/core';
 import React, { Component, Fragment } from 'react';
 import Router from 'next/router'
 import auth from '../function/authen'
+import AlertText from '../components/AlertText';
 const styles = theme => ({
     CantScanBtn:{
       fontSize: '2.9375rem',
@@ -29,22 +30,19 @@ class Camera extends Component {
   }
   handleScan(data) {
     if (data) {
+      this.child.handleClickInfo()
       axios.get(data).then(res =>{
-        console.log(data)
+        this.props.loadhandle(true)
         localStorage.setItem('token', res.headers.authorization)
         localStorage.setItem('rootapi', "https://" + data.split('/')[2] + '/')
         Router.replace('/main')
-        console.log(data.split("/"))
       }).catch(()=>{
-        this.props.errorhandle(true)
+        this.child.handleClickError()
       })
     }
     
   }
   onImageLoad(){
-    this.setState({
-        loading:true
-    })
     this.refs.qrReader.openImageDialog()
   } 
   handleError(err) {
@@ -72,6 +70,8 @@ class Camera extends Component {
               className={classes.CantScanBtn}>
               Can't scan ? click
         </Button>
+        
+        <AlertText onRef={ref => (this.child = ref)}/>
         </NoSSR>
       </Fragment>
     );

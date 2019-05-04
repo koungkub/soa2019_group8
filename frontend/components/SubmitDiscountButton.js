@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import Router from 'next/router'
-import {withStyles, Button, NoSsr} from '@material-ui/core';
+import {withStyles, Button, NoSsr} from '@material-ui/core'
 import axios from 'axios'
+import AlertText from '../components/AlertText'
 
 const styles = theme => ({
   greenBtn:{
@@ -54,6 +55,7 @@ class SubmitDiscountButton extends Component {
               >
                     Submit
               </Button>
+              <AlertText onRef={ref => (this.child = ref)}/>
     </NoSsr>
           </Fragment>
     );
