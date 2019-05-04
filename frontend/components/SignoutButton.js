@@ -9,7 +9,7 @@ const styles = theme => ({
     fontSize: '1.575rem',
     width: 300
   }
-});
+})
 class SignoutButton extends Component {
   constructor(props){
     super(props)
@@ -30,7 +30,7 @@ class SignoutButton extends Component {
     })
   }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Fragment>
         <NoSsr>
@@ -45,12 +45,12 @@ class SignoutButton extends Component {
         <AlertText onRef={ref => (this.child = ref)}/>
     </NoSsr>
           </Fragment>
-    );
+    )
   }
 }
 
 SignoutButton.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
  
-export default withStyles(styles) (SignoutButton);
+export default withStyles(styles) (SignoutButton)
