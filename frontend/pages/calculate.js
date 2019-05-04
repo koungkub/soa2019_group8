@@ -7,7 +7,6 @@ import TextPrice from '../components/TextPrice'
 import SignoutBtn from '../components/SignoutButton'
 import TextDiscount from '../components/TextDiscount'
 import TextTotal from '../components/TextTotalPrice'
-import AlertError from '../components/AlertError'
 const styles = theme => ({
   centered: {
     position: 'fixed',
@@ -84,7 +83,6 @@ class Calculate extends Component {
           </div>
           <div className="text-center m-5">
           <SignoutBtn errorvar={this.handleError}/>
-          <AlertError error={this.state.error}/>
           </div>
           </NoSsr>
           </Layout>
