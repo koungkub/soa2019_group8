@@ -1,32 +1,29 @@
 import { Component, Fragment } from "react"
 class TextTime extends Component {
-    controlPrice(){
-        let total = this.state.price - this.state.discount
-        if(total > 0){
-            return total
-        }
-        else{
-            return 0
-        }
-    }
     constructor(props){
         super(props)
         this.state = {
-            price : this.props.price,
-            discount: this.props.discount
+            totalPrice: "Please wait"
         }
     }
     componentWillReceiveProps(nextprops){
-        this.setState({
-            price : nextprops.price,
-            discount: nextprops.discount
-        })
+        if(nextprops.price - nextprops.discount > 0){
+            this.setState({
+            totalPrice: nextprops.price - nextprops.discount
+            })
+        }
+        else{
+            this.setState({
+                totalPrice: 0
+            })
+        }
+    
     }
     render(){
         
         return (
             <Fragment>
-                {this.controlPrice()}
+                {this.state.totalPrice}
             </Fragment>
         )
     }
