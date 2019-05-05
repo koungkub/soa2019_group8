@@ -17,11 +17,9 @@ FROM alpine:3.9
 
 WORKDIR /go
 COPY --from=golang-build /work/app /go/app
-COPY wait-for .
 ENV TZ Asia/Bangkok
 
-RUN chmod +x wait-for \
-    && apk add --update --no-cache ca-certificates tzdata
+RUN apk add --update --no-cache ca-certificates tzdata
 
 EXPOSE 8080
 CMD [ "./app" ]
