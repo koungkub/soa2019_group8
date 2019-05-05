@@ -3,7 +3,11 @@ import axios from 'axios'
 function checklogin(){
   try{
     const token = localStorage.token
-    axios.get(rootapi+ 'parking').then(res=>{
+    axios.get(rootapi+ 'parking',{headers:{
+      headers: {
+        'Authorization': localStorage.token
+      }
+    }}).then(res=>{
       return true
     }).catch(e=>{
       localStorage.clear()
