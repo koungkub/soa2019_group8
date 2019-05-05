@@ -62,7 +62,7 @@ class Main extends React.Component {
   }
   
   render() {
-    let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}><a href='#' name="closeBtn">close</a></div>
+    let close = <div className="close" name="closeBtn" onClick={() => {this.props.onCloseArticle()}}></div>
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="intro" className={`${this.props.article === 'intro' && this.state.page === 'intro' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
@@ -81,7 +81,7 @@ class Main extends React.Component {
             </div>
             <ul className="actions">
               <li><input name="submitcode" value="Generate" className="special" type="submit"/></li>
-              <li><input type="reset" value="Reset" onClick={this.reset}/></li>
+              <li><input type="reset" name="reset" value="Reset" onClick={this.reset}/></li>
             </ul>
           </form>
           {close}
