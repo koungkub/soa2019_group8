@@ -1,21 +1,25 @@
 import Router from 'next/router';
-
+import axios from 'axios'
 function checklogin(){
   try{
     const token = localStorage.token
-    if (typeof(token) == "undefined") {
-        if(location.pathname != '/scan'){
-          if(location.pathname != '/scanlegacy'){
-            Router.push("/scan")
-          }
+    axios.get(rootapi+ 'parking',{headers:{
+      headers: {
+        'Authorization': localStorage.token
+      }
+    }}).then(res=>{
+      return true
+    }).catch(e=>{
+      localStorage.clear()
+      if(location.pathname != '/scan'){
+        if(location.pathname != '/scanlegacy'){
+          Router.push("/scan")
         }
-        return false
       }
-      else {
-        return true
-      }
+      return false;
+    })
   }catch(e){
-    console.log(e)
+    localStorage.clear()
     if(location.pathname != '/scan'){
       if(location.pathname != '/scanlegacy'){
         Router.push("/scan")
