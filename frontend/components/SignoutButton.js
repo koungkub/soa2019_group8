@@ -4,6 +4,7 @@ import {withStyles, Button, NoSsr} from '@material-ui/core'
 import Axios from 'axios'
 import router from 'next/router'
 import AlertText from './AlertText'
+import auth from '../function/authen'
 const styles = theme => ({
   signoutBtn:{
     fontSize: '1.575rem',
@@ -25,8 +26,18 @@ class SignoutButton extends Component {
       router.replace('/thank')
     }).catch(e=>{
       this.child.handleClickError()
-      console.log(e)
-      this.props.errorvar(true)
+      let status = 0
+      try{ 
+        status = e.response.status
+      }catch{}  
+      console.log(status)
+      if(status == 401 || status == 400){
+        localStorage.clear()
+        router.replace('/scan')
+      }
+      else{
+        this.props.errorvar(true)
+      }
     })
   }
   render() {
