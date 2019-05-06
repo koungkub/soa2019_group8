@@ -31,7 +31,7 @@ class SignoutButton extends Component {
         status = e.response.status
       }catch{}  
       console.log(status)
-      if(status == 401 || status == 400){
+      if(status == 401 || status == 400 || status == 422){
         localStorage.clear()
         router.replace('/scan')
       }
