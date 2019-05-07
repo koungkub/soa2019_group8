@@ -35,7 +35,7 @@ $ docker-compose restart parking discount
 
 ## Slide
 
-[slide](https://docs.google.com/presentation/d/1gKa8vxkEBo9d89NVRiW57tena3CZwMn7ghlrfdm7E8w/edit?usp=sharing)
+* [slide](https://docs.google.com/presentation/d/1gKa8vxkEBo9d89NVRiW57tena3CZwMn7ghlrfdm7E8w/edit?usp=sharing)
 
 ## API document
 
